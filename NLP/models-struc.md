@@ -24,7 +24,8 @@
   > Actually, RNN is much like RL, which introduce $x_{0:t-1}$ to the formula of $x_{t}$
 - Maintain a sort of state (beyond the MLP)
 - Seems RNN has some kind of connection with LSTM
-- how to understand $\frac{\partial\bf{X}}{\partial\bf{X}}$​ not $1$​ but:
+- how to understand $\frac{\partial\bf{x}}{\partial\bf{x}}$​ <img src="http://latex.codecogs.com/gif.latex?\frac{\partial\bf{x}}{\partial\bf{x}}" />
+not $1$​ but:
 	
 	$$
 		\begin{bmatrix}
