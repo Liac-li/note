@@ -13,7 +13,8 @@
 - [ ] GRU
 - [x] Page Rank
   - [ ] Perron-Frobenius 定理
-- [ ] CNN
+- [x] CNN
+  - [ ] Derivatives
 
 ----
 
@@ -109,7 +110,36 @@ cs231n lecture [ConvNet](https://cs231n.github.io/convolutional-networks/)
 	- $P$: zero-padding, generally $P\triangleq (F - 1)/2, \, S = 1$
 	- $S$: stride
 
-- TODO: implementation as Matrix Multiplication	
+- Implementation as Matrix Multiplication: **im2col** --> expand the matrix with and use matrix dot product 
+- TODO: derivatives of Convolution layer [pdf](https://box.nju.edu.cn/lib/a57dee24-27c4-4d10-b8e2-6ad75564fec0/file/%E6%9C%AC%E7%A7%91%E8%AF%BE%E7%A8%8B/6.%E5%A4%A7%E4%B8%89%E4%B8%8B%E5%AD%A6%E6%9C%9F/%E6%A8%A1%E5%BC%8F%E8%AF%86%E5%88%AB%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E8%AF%BE%E6%9C%AC/15_CNN.pdf)
+
+## Transformer
+
+Attention is all you need [arxiv-1706.03762](https://arxiv.org/abs/1706.03762)
+
+### Tips
+
+- ? Encoder and Decoder in CNN & RNN
+  - why use sub-layer
+  - modify self-attention in Decoder stack to prevent position from attending to subsequent positions 
+  - output need to shift right, to let position $i$ only depend on the $1:i$ ?, and how to implement it
+- attention mechanisms used in conjunction with RNN
+- **Distance** -- key, operations is constant number with distance growing
+- ? what means encoder decoder *stack*
+
+### Attention
+
+#### Scaled Dot-product attention
+
+- why compute $Q, K, V$ simultaneously
+- why dot-product can be called as *attention function*
+- how additive attention works
+
+#### Multi-head attention
+
+- ? perform attention function on projected $Q, K, V$ parallel
+- ? divide whole matrix into different part to compute
+- allows the model to jointly attend to information from different representation subspaces at different positions
 
 ---
 
