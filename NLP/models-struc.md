@@ -16,6 +16,9 @@
 - [x] CNN
   - [ ] Derivatives
 
+
+Project web [DIVE INTO DEEP LEARNING](https://d2l.ai/index.html)
+
 ----
 
 ## Recurrent Neural Network 
@@ -117,14 +120,16 @@ cs231n lecture [ConvNet](https://cs231n.github.io/convolutional-networks/)
 
 Attention is all you need [arxiv-1706.03762](https://arxiv.org/abs/1706.03762)
 
+Model code implement by Google-brain [tensor2tensor](https://github.com/tensorflow/tensor2tensor)
+
 ### Tips
 
 - ? Encoder and Decoder in CNN & RNN
-  - why use sub-layer
+  - why use sub-layer: one is attention layer, and a FFN, I think it used to activate some specific point data, which is important and worth pay attention to 
   - modify self-attention in Decoder stack to prevent position from attending to subsequent positions 
   - output need to shift right, to let position $i$ only depend on the $1:i$ ?, and how to implement it
-- attention mechanisms used in conjunction with RNN
-- **Distance** -- key, operations is constant number with distance growing
+- attention mechanisms used in conjunction with RNN: different method and theory
+- **Distance** -- key, operations is constant number with distance growing (**Position encode, attention layer**)
 - ? what means encoder decoder *stack*
 
 ### Attention
@@ -141,6 +146,17 @@ Attention is all you need [arxiv-1706.03762](https://arxiv.org/abs/1706.03762)
 - ? divide whole matrix into different part to compute
 - allows the model to jointly attend to information from different representation subspaces at different positions
 
+### In [tensorflow demo](https://www.tensorflow.org/text/tutorials/transformer)
+
+- $Q, K,V$ initialize:
+
+| layer              | $Q$     | $K$     | $V$      |
+|--------------------|---------|---------|----------|
+| encoder-multihead  | $x$       | $x$       | $x$        |
+| decoder-multihead1 | $x$       | $x$       | $x$        |
+| decoder-multihead2 | enc-out | enc-out | dec-out1 |
+
+- Encode & Decoder training: train the same model with same input and mask
 ---
 
 ## About numpy index
