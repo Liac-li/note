@@ -6,7 +6,9 @@
 - [x] LSTM
   - [ ] variants of LSTM
 - [ ] BERT
-- [ ] Transformer
+  - [ ] fine-tuning based approach
+- [x] Transformer
+  - [ ] read the tf source code and modify
 - [ ] DETR
 - [x] RNN
   - [ ] calculate the gradient of twe direction RNN
@@ -15,6 +17,8 @@
   - [ ] Perron-Frobenius 定理
 - [x] CNN
   - [ ] Derivatives
+- [ ] MLM
+- [ ] OpenAI GPT
 
 
 Project web [DIVE INTO DEEP LEARNING](https://d2l.ai/index.html)
@@ -157,6 +161,48 @@ Model code implement by Google-brain [tensor2tensor](https://github.com/tensorfl
 | decoder-multihead2 | enc-out | enc-out | dec-out1 |
 
 - Encode & Decoder training: train the same model with same input and mask
+- TODO: finish ternsorflow demo and modify it
+
+### Conclusion
+
+Transformer 的重点就是在于利用一个注意力机制和位置编码来并行化之前的基于序列的序列的较长的长度的问题，同时也是减少了一些并行训练下的参数数量。
+
+但是不理解的是其结构的设计究竟有何道理，如encode和decode的结合，多次的multihead-attention层的使用，都令人不是很理解，可能需要玩一玩代码。
+
+## BERT: Bidirectional Encoder Representation from Transformers
+
+src code [github-bert](https://github.com/google-research/bert)
+
+### Tips
+
+- Pretrain, jointly conditioning on both left and right context on all layer, unlabeled text
+- ? *next sentence prediction*  jointly with *pretrains text-pair representation*
+- ? unlike [Radford et al.(2018)](https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf), BERT build a **deep** pre-train bidirectional network
+- ? heavily-engineered task-specific architecture 
+- ? unified architecture across different tasks 
+- ? down-stream tasks
+
+### Pre-train
+
+- on unlabeled data over different tasks
+- with 2 tasks:
+  1. Masked LM
+  2. Next Sentence Prediction (NSP)
+
+#### Masked LM
+
+- mask some percentage of input randomly : allow only predict the masked words rather than reconstructing the entire input
+- ? why need masked  
+
+#### NSP
+
+- QA and NLI need the *relationship* between two sentences, which is not directly captured by language model
+
+### Fine-tuning
+
+- base on pretraining parameter, all of which are fine-tuned using labeled data
+- encoding a concatenated text pair with self-attention effectively including bidirectional cross attention between two sentences
+
 ---
 
 ## About numpy index
