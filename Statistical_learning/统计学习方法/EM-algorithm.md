@@ -1,4 +1,4 @@
-# Expectation Maximizathion Algorithm
+# Expectation Maximization Algorithm
 
 用于评估含有隐变量的参数模型的方式，基于最大似然估计或者最大后验
 
@@ -62,7 +62,20 @@ $$
 
 故而得证 $L(\theta) = \log P(Y|\theta)$ 为递增的，同时因为必然有 $L(\theta) \le 0$ , 故而 $L(\theta)$ 收敛。
 
-**TODO**：证明 $\theta$ 的收敛值可以导致 $L(\theta)$ 的收敛值
+**TODO**：证明 $\theta$ 的收敛值可以导致 $L(\theta)$ 的收敛值 (见 refer [2])
+
+## EM 的另一种理解： F 函数
+
+maximization-maximization algorithm of F function
+
+#### 名词定义
+
+#### F 函数的一些性质的推导
+
+#### F 函数与 EM
+
+#### GEM(F 函数的推导)
+> 以增大 F function 为目的
 
 ## EM 的一些备注
 
@@ -72,10 +85,14 @@ $$
     1. $\|\theta^{i+1} - \theta^{i}\| < \epsilon$
     2. $\|Q(\theta, \theta^{i+1}) - Q(\theta, \theta^{i})\| < \epsilon$、
 
+#### 个人理解
+
+- 感觉上 EM 算法有点像那种神经网络一样， 在已知一定的基础模型(生成式)下对于决定输出的隐变量(组合系数)进行迭代的估计，但是其不像 NN 一样有一个输入，而是只有观察到的输出。也许从贝叶斯流派的理解更加的自然 ?
+
 ## Reference
 
 1. 这个笔记是基于李航老师的《统计学习基础》
-2.  
+2. 关于 $\theta$ 收敛与 $L(\theta)$ 收敛的一致性 [On the convergence of properties of EM](https://projecteuclid.org/journals/annals-of-statistics/volume-11/issue-1/On-the-Convergence-Properties-of-the-EM-Algorithm/10.1214/aos/1176346060.full)
 
 ## Math Proof
 

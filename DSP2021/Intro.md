@@ -46,7 +46,7 @@ WaveNet
 
 信号 -> 信号特征提取 -> 信号分析 / 识别
 
-时域 $\longleftrightarrow^{\text{傅里叶变换}}$ 频域
+时域 $\overset{\text{傅里叶变换}}{\longleftrightarrow}$ 频域
 
 - 傅里叶：
     - FS -> FT -> LT (连续)
