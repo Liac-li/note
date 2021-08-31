@@ -20,3 +20,17 @@
 
 1. 《统计学习方法》 - 李航:w
 2. 《机器学习》 - 周志华， 《Pumpkin book》 - [github-repo](https://github.com/datawhalechina/pumpkin-book)
+
+## 编译原理部分
+
+#### Todo
+
+- [ ] 第一、二章节 
+
+#### 参考
+
+- 龙书，第二版
+
+## 形式语言与自动机
+
+[课程网站](http://cs.nju.edu.cn/bulei/FLA21.html)
