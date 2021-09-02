@@ -1,15 +1,17 @@
 # 形式语言自动机
 
-## 课程组成：
+## 课程组成
 
-1. 
-2.
+1. Preliminaries 
+2. 
 3. Modeling
 4. Tutorials
 
-**TextBook**: Introduction to Automata Theory
+**TextBook**: Introduction to Automata Theory, Languages, and Computation 3/E
 **Referred Reading**: 
 - Introduction to the theory of Computation
+
+**Grading**: 30% assignment, 20% project, 50% final exam
 
 ## Preliminaries
 
