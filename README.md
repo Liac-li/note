@@ -63,3 +63,15 @@
 - [ ] **周期信号都是功率信号**, 非周期可能是功率，也可能是功率信号
 
 - [ ] ? 基本的离散序列的理解 (PPT-22)
+
+
+## MIT 6.824
+
+
+#### Todo
+
+- [ ] lec 1
+
+#### Paper
+
+- [Map Reduce](https://pdos.csail.mit.edu/6.824/papers/mapreduce.pdf)
