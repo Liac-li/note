@@ -50,6 +50,10 @@
 
 [课程网站](http://cs.nju.edu.cn/bulei/FLA21.html)
 
+#### Todo
+
+- [ ] Finish Note about automata (definition of DFA, acceptable language, Regular language) 
+
 ## 数字信号处理 DSP21
 
 课程网站 [DSP21](https://www.lamda.nju.edu.cn/yehj/dsp2021/)

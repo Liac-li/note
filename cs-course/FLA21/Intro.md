@@ -7,7 +7,7 @@
 3. Modeling
 4. Tutorials
 
-**TextBook**: Introduction to Automata Theory, Languages, and Computation 3/E
+**TextBook**: Introduction to Automaton Theory, Languages, and Computation 3/E
 **Referred Reading**: 
 - Introduction to the theory of Computation
 
@@ -91,3 +91,42 @@ Note:
     - $L^0 = \{\lambda\}$
 - Star-closure(Kleene *): $L^* = L^1 \cup L^2\dots$
     - $L^{+} = L^{*} - \{\lambda\}$
+
+## Automaton
+
+Finite or infinite states machine
+
+##### Description
+
+- Acceptance: Given a sequence of inputs(languages), start in the start state and follow the transition from each symbol in turn
+
+##### Language of an automaton
+
+- Language should be the string sequence acceptable of automaton
+- Donated of $L(A)$
+- Different final state $\to$ different language
+
+#### Deterministic finite automata
+
+- Alphabet: **finite** set fo symbols
+- String over alphabet $\Sigma$ is a list, each element of which if a member of $\Sigma$ (could be **infinite**)
+- Language must be a subset of $\Sigma^*$ (remember the $\bm{\epsilon}$, the empty string)
+
+##### Formalism for definite languages
+
+1. Finite set of state($Q$)
+2. Input alphabet  ($\Sigma$)
+3. Transition function($\delta$)
+4. Start state ($q_0 \in Q$)
+5. A set of final states($F \subseteq Q$)
+    > Finite and accept are syno
+
+- Transition function: Take state and an input symbol as arguments, $\delta(q, a)$
+
+    Note: $\delta$ is a total function. All input $a$ which will transits to dead state 
+
+#### Regular language
+
+A language is regular is acceptable by a DFA
+
+> **DFA 不会记数**
