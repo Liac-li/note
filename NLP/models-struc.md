@@ -173,14 +173,19 @@ Transformer 的重点就是在于利用一个注意力机制和位置编码来�
 
 src code [github-bert](https://github.com/google-research/bert)
 
+1. How to fine turn
+2. Pre-training learn what
+
 ### Tips
 
-- Pretrain, jointly conditioning on both left and right context on all layer, unlabeled text
-- ? *next sentence prediction*  jointly with *pretrains text-pair representation*
-- ? unlike [Radford et al.(2018)](https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf), BERT build a **deep** pre-train bidirectional network
+- Pre-train, jointly conditioning on both left and right context on all layer, unlabeled text
+- ? *next sentence prediction*  jointly with *pre-trains text-pair representation*
+- unlike [Radford et al.(2018)](https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf), BERT build a **deep** pre-train bidirectional network
+    > like the BERT name, BERT encoder is bidirectional implemented as matrix product
 - ? heavily-engineered task-specific architecture 
 - ? unified architecture across different tasks 
 - ? down-stream tasks
+- ? MLM network objective enables the representation to fuse the lest and the right context with mask
 
 ### Pre-train
 
