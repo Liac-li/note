@@ -39,18 +39,35 @@
 
 - Basic: a 为 $\Sigma$ 上的一个符号，a 为正则，$L(a) = \{a\}$
 - Induction step
+
+    Basic:
+    
     1. Select: $(r) | (s), L((r)|(s)) = L(r)\cup L(s)$
     2. Concatenate: $(r)(s), L((r)(s)) = L(r)L(s)$
     3. Closure: $(r)^*, L((r)^*) = (L(r))^*$
-    4. TODO
+    4. Bracket: $L((r)) = L(r)$
+
+    Extended:
+    
+    1. $r^+ = rr^*$, more than one
+    2. $r? = \epsilon| r$, zero or one 
+    3. $[abc]$, $[a-zA-Z]$
+
+- 优先级: $* > \text{链接符} > |$
 
 ##### 性质
-
 - 等价性：若 $r$ 和 $s$ 表示同样的语言
     - $(a|b)^*， a^*b^*$ 不等价 - 任意a,b的序列， a任意多 + b任意多
     - $(a|b)^*, (a^*b^*)^*$ 等价 - 任意a,b的序列
-- 运算 TODO
+- 运算 
+    |Operator| 性质|性质 |性质 |
+    |--|--|--|--|
+    | $\vert$ | $r\vert s = s\vert r$ | $r\vert(s\vert t) = (r\vert s)\vert t$ | $r(s\vert t) = rs \vert rt$ |
+    |concatenate| $\epsilon r = r\epsilon$ |
+    | $*$ | $r^* = (r\vert \epsilon)^* = (r\vert \epsilon)(r\vert \epsilon)\cdots$ | $r^{**} = r^*$ |
+
+
 
 **正则定义**: 对于正则表达式的一个命名，$d_i \to r_i$
 - $d_i \not \in \Sigma$
-- TODO
+- $\forall r_i$ 为 $\Sigma \cup \{d_1, d_2,\dots, d_{i-1}\}$ 上的正则表达式，也即新的正正则表达式可以利用已定义的正则定义 

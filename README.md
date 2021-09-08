@@ -40,7 +40,7 @@
 #### Todo
 
 - [x] 第一、二章节 
-- [ ] 补全词法分析部分的笔记
+- [x] 补全词法分析部分的笔记
 
 #### 参考
 
@@ -52,7 +52,7 @@
 
 #### Todo
 
-- [ ] Finish Note about automata (definition of DFA, acceptable language, Regular language) 
+- [x] Finish Note about automata (definition of DFA, acceptable language, Regular language) 
 
 ## 数字信号处理 DSP21
 
@@ -60,7 +60,7 @@
 
 #### Todo
 
-- [ ] 整理第二节课笔记
+- [x] 整理第二节课笔记
     1. 整理一些常见信号的功率或者...w
 
 #### 疑问
