@@ -44,7 +44,7 @@ Labs:
 1. map reduce
 2. replication using Raft
 3. Replicated K/V servers 
-4. sharded K/V servers
+4. shaded K/V servers
 5. (Optional) achieve a paper
 
 ##### Focus

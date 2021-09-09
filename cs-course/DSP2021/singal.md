@@ -62,17 +62,62 @@
 
 #### 常见的离散信号
 
-? 基本的离散序列的理解 (PPT-22)
+- 实指数序列: $x[n] = Ar^n$
+    
+    若令 $r \doteq e^{\beta}, x[n] = Ae^{\beta n}, n \in \mathbb{Z}$
+- 虚指数序列: $x[n] = e^{j\omega_0n}$
+
+    日常来的点欧拉： $e^{j\omega_0 n} = \cos \omega_0n + j\sin \omega_0n$
+    $$ A\cos(\omega_0n + \phi) = \frac{A}{2}e^{j\phi}e^{j\omega_0n} + \frac{A}{2}e^{-j\phi}e^{-j\omega_0n} $$
+- 复指数序列： $x[n] = Az^n = |A|e^{j\theta}(|z|e^{j\omega_0})^n$
+
+    再来点欧拉:
+    $$
+        |A|e^{j\theta}(|z|e^{j\omega_0})n \\
+        = |A||z|\cos(\omega_0n + \theta) + j|A||z|\sin(\omega_0n + \theta) 
+    $$
+
+##### 周期性问题
+
+可以有看到虚指数序列 $e^{j(\omega_0 + 2\pi)n} = e^{j\omega_0n}e^{j 2 \pi n} = e^{j\omega_0 n}$
+
+也就是说，在离散的序列中，会应为欠采样的问题导致对于频率的增加而没有体现出来的问题
 
 **周期性的性质与连续信号有显著的不同**， 这还是采样的问题
 
-- 单位信号
+- 单位信号: (unit impulse)
+    $$
+        \delta[n] = \left\{
+            \begin{aligned}
+                1, \, n = 0 \\
+                0, \, n \neq 0
+            \end{aligned}\right.
+    $$
+    - $x[n]\delta[n] = x[0]\delta[n]$, 易见
+    - $x[n]\delta[n-n_0] = x[n_0]\delta[n-n_0]$, 令 $n - n_0 = 0$, 易见
+    - 用单位信号的位移来离散的表示任意**离散信号**
 - 单位阶跃：(unit step)
     $$
         u[n] = \left\{\begin{aligned} 1, \, n\ge 0 \\
             0, \, n < 0
         \end{aligned} \right.
     $$
+
+##### 信号的差分
+
+做差 (？有啥用)
+||一阶 |二阶|
+|-|-|-|
+|前向差分 $\Delta x[n]$ | $\Delta x[n] = x[n+1] - x[n]$ | $\Delta^2 x[n] = \Delta(\Delta x[n])$ |
+|后向差分 $\nabla x[n]$ | $\nabla x[n] = x[n] - x[n-1]$ | $\nabla^2x[n] = x[n] - 2x[n-1] + x[n-2]$ |
+
+## 奇异信号
+
+信号本身或者其导数具有**不连续**点(跳变)
+> 也就是说不考虑离散的 ?
+
+TODO
+
 ## 信号的变化
 
 - 尺度变换 $x(t) \to x(at)$ with $t > 0$
@@ -81,3 +126,41 @@
 - 时移 $x(t) \to x(t + t_0)$
 - 信号的乘法与加法：
     - $x(t) = x_1(t) \cdot x_2(t)$， 使用一些作为窗口信号来进行筛选
+
+## Euler's Formula
+
+$\forall x \in \mathbb{Q}, e^{ix} = \cos x + i\sin x$, 可以注意到 $\forall x \in \mathbb{C}$ 仍然成立
+
+容易的通过加减推出
+
+- $$ \sin x  = \dfrac{e^{ix} - e^{-ix}}{2i} $$
+- $$ \cos x = \dfrac{e^{ix} + e^{-ix}}{2} $$
+
+##### 在复数中的推理
+
+不妨有 $z \in \mathbb{Z}, \, z = x + iy$
+
+在复平面的极坐标视角中有：
+
+$$
+    \begin{aligned}
+        z &= x + iy \\
+        &= |z|\cos \theta + (|z|i) \sin\theta \\
+        &= |z| (\cos\theta + i\sin\theta)
+        &= |z| e^{i\theta}
+    \end{aligned}
+$$
+
+## 练习
+
+1. 画出 $x(t) = e^{j2t} + e^{j3t}$ 的模
+
+    模必然为1, 为一个螺旋线， 周期为 $2\pi$
+2. 是否为周期信号 
+    - $x_1[n] = \cos(n\pi / 6)$ 是， $N = 12$
+    - $x_2[n] = \cos(n/6)$ 是， $N = 12\pi$
+3. $T$ 为常数， $\omega_0 =\frac{2\pi}{T}$
+    - $x(t) = t[u(t) - u(t-T)]$, 从$0\to T$ 的自 $0 \to T$ 的线性函数
+    - $x(t) = \sin\omega_0t\cdot[u(t)-u(t - T)]$, 在 $0 \to T$ 上的完整的一个周期为 $T$ 的 $sin$ 函数
+
+    可以把 $u(t) - u(t- T)$ 理解为一个选择子
