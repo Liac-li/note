@@ -69,4 +69,12 @@ making **Abstriction**
 
 good illustration and very influential
 
-# Todo 47:11
+Approach
+- Map&Reduce: sequential code
+- MR deals with distribution 
+
+#### Abstract view
+
+- Branch of input files: f1, f2, f3
+- Map function: f1 to <word, value> 
+- Reduce function: merge/combine the key/value pair to final result
