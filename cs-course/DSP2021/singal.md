@@ -60,6 +60,24 @@
     - $Sa(k\pi) = 0$
     - $\int^{\infty}_{-\infty} Sa(t) = \pi$，关注一下三角部分
 
+- 冲击信号:(极限模型) $\delta(t) = \lim_{\Delta \to 0}f_{\Delta}(t)$
+    > 冲击信号的极限性质**重要**
+
+    面积为 1, 在 $\Delta\to 0$. 只在 $t = 0$ 处有值
+
+    Direct 定义：
+    $$
+        \begin{aligned}
+        & \delta(t) = 0, t\neq 0\\
+        & \int_{-\infty}^{\infty}\delta(t)dt = 1
+        \end{aligned}
+    $$
+
+    - 展缩特性
+
+
+
+
 #### 常见的离散信号
 
 - 实指数序列: $x[n] = Ar^n$
@@ -118,6 +136,10 @@
 
 TODO
 
+##### 信号的微分
+
+利用冲激信号来进行突变的信号不连续点的导数的表示
+
 ## 信号的变化
 
 - 尺度变换 $x(t) \to x(at)$ with $t > 0$
@@ -126,6 +148,10 @@ TODO
 - 时移 $x(t) \to x(t + t_0)$
 - 信号的乘法与加法：
     - $x(t) = x_1(t) \cdot x_2(t)$， 使用一些作为窗口信号来进行筛选
+
+## 信号的分解
+
+TODO
 
 ## Euler's Formula
 

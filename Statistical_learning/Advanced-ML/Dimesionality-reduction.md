@@ -7,14 +7,20 @@ lazy learning 的代表-训练的时候啥都不做，测试的时候干活
 - 实际应用中，是否可找到 k 近邻?
 
     在推导中，有假设 $P(c|x) \doteq  P(c|z)$ , 及要求样例是密集的 (bound set as $10^{-3}$)
+- 关于西瓜书上的 $P(err) \leq 2\times (1 - P(c^*|x))$
+    1. 假设了 $P(c|x) \approx P(c|z)$ 也就是说强调了样本空间比较的密集
+    2. 最差是 Bayesian 最优分类器的 error 两倍没有啥意思 20% -> 40%
 
 - Dimension disaster
 
-    高维后， 其一是空间个计算不方便，二是极为稀疏( $\cos$ 算后基本是垂直的 )
+    高维后， 其一是空间内计算不方便，二是极为稀疏( $\cos$ 算后基本是垂直的 )
 
 #### MDS (multiple Dimensional Scaling)
 
 找到一个低维空间， 为一个保距映射 $\to$ 保持内积
+
+若有样本之间的内积矩阵为 $\bm{B}$
+可以有： $\bm{B = V\Lambda V^\top}$, 做特征谱 $\bm{Z} = \bm{\Lambda_*^{1/2}V_*^{1/2}}$, 去除掉一些小的特征值 (谱是一个长尾分布的)
 
 ##### Classical MDS
 
