@@ -41,11 +41,83 @@ Finite or infinite states machine
 
 ##### Language of DFA
 
-- **Automata of all kinds define languages**
+- **Automata of all kinds define languages** (set)
 - For DFA and DFA language $L(A)$, $L(A)$ is the set of strings labeling **paths from the start state to the final state** ( $L(A)$ is a set of strings $w$ s.t. $\delta(q_0, w)$ is in $F$ )
 
 ## Regular language
 
-A language is regular is accepted by some DFA
+A language is regular is accepted by some DFA, the DFA must accept **only** the strings in L(不是超集，不是子集)
 
 > **DFA 不会记数**
+
+- Example:
+
+    $L_3 = \{w | w \in \{0, 1\}^*\}$, and $w$ viewed as a binary integer is divisible by 23
+
+    end with $10111b$?
+
+    取模23只有23种
+
+**Theory**: Reverse of a regular language is also regular
+
+## Nondeterministic Finite automata (NFA)
+
+1. Nondeterministic
+2. Subset construction
+3. $\epsilon$ - Transitions
+
+#### Nondeterministic
+
+- Accept if any sequence of **choices** leads to a final state
+
+**Set**
+
+**Formal NFA** 
+
+TODO: 看书
+- Transition Functions: all become a set. Basic : $\delta(q, \epsilon) = \{q\}$
+- Language of NFA: 
+    if $\delta(q_0, w)$ contains at least one final set, then $w$ is accepted by NFA ( $F \cap \delta(q_0, w) \neq \emptyset$ )
+
+    Language is set of strings it accepts
+
+#### Equivalence of DFA's and NFA's
+
+- DFA can be turned into an NFA that accepts same languages (表达能力的等价)
+    - turn $\delta_D(q, a) = p\to \delta_N(q, a) = \{p\}$
+- For any NFA there is a DFA that accepts the same language
+    - Proof: subset construction
+    - number of states of DFA cna be exponential in the number of stated of NFA
+
+##### Subset Construction
+
+Given NFA with $Q, \Sigma, \delta_N, q_0, F$, to construct DFA's elements
+
+1. $\Sigma$ must be same
+2. states $2^{Q}$ (set of subsets of Q)
+3. Start state $\{q_0\}$ (all state of DFA become set)
+4. Final state: all those with member of $F$ (Define of NFA $F$)
+
+    
+> Critical Point:
+> TODO 
+
+5. $\delta_D(\{q_1, \dots, q_k\}, a) = \cap_{i\in (1, k)} \delta_N(q_i, a)$
+
+
+> ??? why num will be exponential
+> 感觉上像是一个BFS,利用NFA的状态转移的子集直接构造成DFA的转移集合
+
+**Proof**
+
+base on string
+
+**Extended NFA ($\epsilon$-NFA)**
+
+- $\epsilon-closure(s)$, represent as $CL(s)$
+- Extended $\delta$
+
+
+Every NFA is an $\epsilon$-NFA
+
+

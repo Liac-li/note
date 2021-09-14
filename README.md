@@ -57,6 +57,7 @@
 
 #### Todo
 
+- [ ] Note of NFA, DFA, $\epsilon$-NFA
 - [x] Finish Note about automata (definition of DFA, acceptable language, Regular language) 
 
 ## 数字信号处理 DSP21
