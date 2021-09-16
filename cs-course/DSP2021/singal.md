@@ -60,7 +60,7 @@
     - $Sa(k\pi) = 0$
     - $\int^{\infty}_{-\infty} Sa(t) = \pi$，关注一下三角部分
 
-- 冲击信号:(极限模型) $\delta(t) = \lim_{\Delta \to 0}f_{\Delta}(t)$
+- 冲击信号(impulse response):(极限模型) $\delta(t) = \lim_{\Delta \to 0}f_{\Delta}(t)$
     > 冲击信号的极限性质**重要**
 
     面积为 1, 在 $\Delta\to 0$. 只在 $t = 0$ 处有值
@@ -73,7 +73,18 @@
         \end{aligned}
     $$
 
-    - 展缩特性
+    - 具有强度: $\delta(t)$ 对于时间的定积分值
+    - 可以表示**其他任意信号**或表示信号**间断点的导数**
+    - 展缩特性: $\delta(\alpha t) = \frac{1}{|\alpha|}\delta(t), (\alpha\neq 0)$
+    - 抽样性质： $x(t) \delta(t-t_0) = x(t_0)\delta(t-t_0)$ 
+
+        ??? 利用Dirac的定义？
+    - 信号的冲激表示: $\int_{-\infty}^{\infty} x(t)\delta(t-t_0) = x(t_0)$
+        其中令 $t = \tau, t_0 = t$ :
+        $$
+            \int_{-\infty}^{\infty} x(\tau)\delta(\tau - t)d\tau = x(t)
+        $$ 
+        > 注意比较离散信号的单位脉冲表述
 
 
 
@@ -134,8 +145,6 @@
 信号本身或者其导数具有**不连续**点(跳变)
 > 也就是说不考虑离散的 ?
 
-TODO
-
 ##### 信号的微分
 
 利用冲激信号来进行突变的信号不连续点的导数的表示
@@ -151,7 +160,47 @@ TODO
 
 ## 信号的分解
 
-TODO
+- 脉冲分量，分解为一些列冲激信号之和 $x(t) = \int_{-\infty}^{\infty}x(\tau)\delta(\tau-t)d\tau$
+- 离散信号，一系列单位脉冲信号之和 $x(t) = \sum_{k=-\infty}^{\infty} x[k] \delta[x-k]$
+
+#### 信号的向量化
+
+| Name | 数学表达 |
+| ---- | ------- |
+| 强度 | $\|x\|_1 = \int_{-\infty}^{\infty} \lvert x(t)\rvert dt $ |
+|  能量 | $\|x\|_2 = \sqrt{\int_{-\infty}^{\infty}\lvert x(t) \rvert^2dt}$ |
+| 峰值 | $\|x\|_0 = \sup \lvert x(t)\rvert$ |
+|内积| $<x_1(t), x_2(t)> = \int_{-\infty}^{\infty}x_1(t)x_2(t)dt$ |
+|| $\|x\|_2 = <x(t), x(t)>$ |
+
+**利用一族正交函数**分解
+
+$x_1(t) = c_{12}x_2(t)$ 在 $(t_1, t_2)$ 上表示
+
+$$
+    \min_{c_{12}} \epsilon^2 = \frac{1}{t_2 - t_1}\int_{t_1}^{t_2} [x_1(t) - c_{12}x_2(t)]^2 dt
+$$
+
+let $\frac{\partial \epsilon}{\partial c_{12}} = 0$, get $c_{12}^* = \dfrac{\int_{t_1}^{t_2}x_1(t)x_2(t)}{\int_{t_1}^{t_2}x_2(t)} = \dfrac{<x_1, x_2>}{<x_2, x_2>}$
+
+if $<x_1, x_2> = 0$ 则其正交
+
+作**一族**正交基 $g_1, g_2, \dots, g_n$ , $x(t) = \sum_{r=1}^n c_rg_r(t) = \bm{c_r}\bm{g}(t)$， and $c_r = \dfrac{<x(t), g_r(t)>}{K_r^2}$
+
+- 帕萨瓦尔定理： $\int_{t_1}^{t_2} x^2(t)dt = \sum_{r}^{\infty} c_r^2$, 且  $c_r$ 是**一组完备的正交基**的表示系数
+
+> $<g_1, g_2, \dots, g_n>$ 完备也即不存在 $g(t)$ 使得
+> 1. $<g(t), g_r(t)> = 0, r=1, \dot, n$
+> 2. $0 < \int_{t_1}^{t_2} g(t)dt < \infty$
+>> 常见的有：三角函数集， 复指数函数集， Rademacher函数集 ($r_k(t) = \text{sign}\sin2^k\pi t$)
+
+**奇偶分解**
+
+$x(t) = x_e(t) + x_o(t)$
+
+$x_e(t) = \frac{1}{2}[x(t) + x(-t)], x_e(-t) = -x_e(t)$
+
+$x_o(t) = \frac{1}{2}[x(t) - x(-t)], x_o(t) = -x(-t)$
 
 ## Euler's Formula
 
