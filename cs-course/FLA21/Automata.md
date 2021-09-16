@@ -48,7 +48,7 @@ Finite or infinite states machine
 
 A language is regular is accepted by some DFA, the DFA must accept **only** the strings in L(不是超集，不是子集)
 
-> **DFA 不会记数**
+> **DFA 不会记数**, 可以有穷，但是不能表示无穷
 
 - Example:
 
@@ -74,7 +74,6 @@ A language is regular is accepted by some DFA, the DFA must accept **only** the 
 
 **Formal NFA** 
 
-TODO: 看书
 - Transition Functions: all become a set. Basic : $\delta(q, \epsilon) = \{q\}$
 - Language of NFA: 
     if $\delta(q_0, w)$ contains at least one final set, then $w$ is accepted by NFA ( $F \cap \delta(q_0, w) \neq \emptyset$ )
@@ -100,17 +99,18 @@ Given NFA with $Q, \Sigma, \delta_N, q_0, F$, to construct DFA's elements
 
     
 > Critical Point:
-> TODO 
+> DFA states have names are set of NFA states, but must be understand as a single symbol, while processing as a set with extended $\delta(q, a)$
 
 5. $\delta_D(\{q_1, \dots, q_k\}, a) = \cap_{i\in (1, k)} \delta_N(q_i, a)$
 
 
-> ??? why num will be exponential
+> why num will be exponential: DFA 的状态是直接利用NFA的状态集合展开的，这个具体的状态数是不确定的
 > 感觉上像是一个BFS,利用NFA的状态转移的子集直接构造成DFA的转移集合
 
 **Proof**
 
 base on string
+> a little tricky
 
 **Extended NFA ($\epsilon$-NFA)**
 
@@ -120,4 +120,8 @@ base on string
 
 Every NFA is an $\epsilon$-NFA
 
+##### Summary
+
+- DFA, NFA, $\epsilon$-NFA all accept exactly the same set of languages, regular languages
+- Only DFA can be implemented
 

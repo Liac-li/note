@@ -82,3 +82,59 @@
 ##### 多元时序
 
 多元非平稳序列构建回归模型，会出现**伪回归**现象
+
+## 数学基础
+
+- n 维随机变量 $X = [X_1, X_2, \dots, X_n]^\top$
+- 累计分布函数 $F(x_1, \dots, x_n) = P\{X_1 \le x_1, \dots, X_n \le x_n\}$
+- 概率密度函数(连续):
+    $$f(x_1, \dots, x_n) = \dfrac{\partial^n F(x_1, \dots, x_n)}{\partial x_1, \dots, \partial x_n}$$
+
+    $$F(x_1, \dots, x_n) = \int_{-\infty}^{x_1}\dots\int_{-\infty}^{x_n}f(t_1, \dots, t_n)dt_1\dots dt_n$$
+- 概率密度函数(离散)： $f(x_1,\dots, x_n) = P\{X_1=x_1, \dots, X_n=x_n\}$
+- 期望: 多元 $E[\bm{X}] = [E[X_1], E[X_2],\dots, E_[X_n]]^\top$
+- 矩：
+    - n 阶矩： $E[X^n] = \int_{\infty}^{\infty}x^nf_{X}(x)dx$
+    - n 阶中心矩： $E[(X - E[x])^n] = \int_{-\infty}^{\infty}(x -  E[X])^nf_{X}(x) dx$, 方差 $V[X]$ 为二阶中心矩
+- 协方差：
+    $$
+        \begin{aligned}
+            Cov(aX_1 + bX_2, cX_3 + dX_4) &=  acCov[X_1, X_3]\\ 
+            &+ ad Cov[X_1, X_4]\\
+            &+ bc Cov[X_2, X_3]\\
+            &+ bd Cov[X_2, X_4]
+        \end{aligned}
+    $$
+    
+
+**多维度**
+
+注意**协方差矩阵** $\bm{\Sigma_X} = V[\bm{X}] = E[(\bm{X-\mu})(\bm{X-\mu})^\top]$, 其中 $\bm{\Sigma}\succeq 0$ (通过一些相关系数的性质可得)
+
+有 $\bm{X}\in \mathbb{R}^{p\times n}, \bm{Y}\in \mathbb{R}^{q\times n} $
+$$
+    \begin{align}
+        \bm{\Sigma_{\bm{XY}}} &= C[\bm{X, Y}] \\
+         &= E[(\bm{X-\mu})(\bm{Y-\nu})^\top]\\
+         &= \begin{bmatrix}
+                Cov[X_1, Y_1] & \cdots & Cov[X_1, Y_q]\\
+                \vdots & \ddots & \vdots \\
+                Cov[X_p, Y_1] & \cdots & Cov[X_p, Y_q]
+            \end{bmatrix}
+    \end{align}
+$$
+
+$$
+    \begin{aligned}
+       & \quad C[\bm{A(X + U)}, \bm{B(Y+V)}] \\
+       &= \bm{A}C[\bm{X, Y}]\bm{B}^\top + \bm{A}C[\bm{X, V}]\bm{B}^\top\\
+       & +\bm{A}C[\bm{U, Y}]\bm{B}^\top + \bm{A}C[\bm{U, V}]\bm{B}^\top 
+    \end{aligned}
+$$
+
+且有 $V[\bm{AX}] = \bm{A}V[\bm{X}]\bm{A}^\top$
+
+TODO: 
+- [ ] 条件期望
+- [ ] 方差分离
+- [ ] 线性投影
