@@ -10,10 +10,12 @@
 | 数字信号处理 | [DSP21](https://www.lamda.nju.edu.cn/yehj/dsp2021/) |
 |时间序列分析| [TSA21](https://www.lamda.nju.edu.cn/yehj/timeseries2021/)
 |计算机网络| [Labs](http://114.212.10.193:8080/course/net21/) | 内网访问 | |
+|启发式搜索| [HSA](http://www.lamda.nju.edu.cn/HSEA21/)
 
 
 #### Todo-list
 
+- [ ] [DSP] 卷积的相关笔记以及自学
 - [ ] EM 算法的 $L(\theta), \theta$ 的收敛对应
 - [ ] F function in EM alg
 - [ ] EM 算法的最大化后验概率，或EM在朴素贝叶斯中的运用
