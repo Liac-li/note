@@ -134,9 +134,47 @@ $$
 
 且有 $V[\bm{AX}] = \bm{A}V[\bm{X}]\bm{A}^\top$
 
-??? $E[Y|X]$ 是个 X 的函数
+- 条件期望：
+  $$
+    E[Y | X=x] = \int_{-\infty}^{\infty}y\cdot f_{Y|X=x}dy 
+  $$
+  
+  $E[Y|X]$ 是个 $x$ 的函数, 因为已经把 $Y$ 给积分了
+  
+  故而有一些推论
+  - $E[Y] = E[E[Y|X]]$
+  - $E[g(X)Y|X] = g(X)E[Y|X]$
+  - ??? $E[g(X)Y] = E[g(X)E[Y|X]]$ (直接用积分组合是否足够严谨)
+  - $E[a|X]  = a$
+  - $E[g(X)|X] = g(X)$
+  - $E[cX + dZ | Y] = cE[X|Y] + dE[Z|Y]$
+  
+- **方差分离**：
+  [wiki-law_of_variance](https://en.wikipedia.org/wiki/Law_of_total_variance)
+  1. $$
+      C[Y, Z|X] = E[(Y-E[Y|X])(Z-E[Z|X])^\top | X]
+    $$
 
-TODO: 
-- [ ] 条件期望
-- [ ] 方差分离
+      易见 $V[Y|X] = E[(Y-E[Y|X])(Y-E[Y|X])^\top|X]$
+    > 暂时当成定义式理解
+
+
+  2. $$
+      V[X] = E[V[X|Y]] + V[E[X|Y]]
+     $$
+
+     $$
+      \begin{aligned}
+        V[X] &= E[X^2] - (E[X])^2 \\
+          &= E[E[X^2|Y]] - (E[E[X|Y]])^2\\
+          &= E[V[X|Y] + (E[X|Y])^2]  - (E[E[X|Y]])^2\\
+          &= E[V[X|Y]] + (E[E[X|Y]^2] - E[E[X|Y]]^2)\\
+          &= E[V[X|Y]] + V[E[X|Y]]
+      \end{aligned}
+     $$
+
+     $$
+      C[Y,Z] = E[C[Y,Z|X]] + C[E[Y|X], E[Z,X]]
+     $$
+
 - [ ] 线性投影
