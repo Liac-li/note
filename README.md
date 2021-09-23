@@ -16,10 +16,11 @@
 #### Todo-list
 
 - [ ] [DSP] 卷积的相关笔记以及自学
+  - 卷积的展缩、微分、积分的推导 
 - [ ] EM 算法的 $L(\theta), \theta$ 的收敛对应
-- [ ] F function in EM alg
+- [x] F function in EM alg
 - [ ] EM 算法的最大化后验概率，或EM在朴素贝叶斯中的运用
-- [ ] PCA 部分的推导
+- [x] PCA 部分的推导
 - [x] 距离和内积的相互推导
 - [ ] 集成学习的几个方法的简单看看
 - [x] NFA, DFA部分笔记 (见FLA-automata)

@@ -63,7 +63,7 @@ Intrinsic Space, 更为本质的表现数据的空间
 
 ##### ISOMAP (manifold learning)
 
-??? 如何找到流形空间内的距离 - 测距线距离
+??? 如何找到流形空间内的距离 - 测距地距离
 
 1. 全局建模
 2. ISOMAP 方法
@@ -79,8 +79,9 @@ Intrinsic Space, 更为本质的表现数据的空间
 在高维空间中利用近邻集合的一个**重构系数** $w$ ，在低维空间中保证重构系数 $w$
 
 $$
-    \min_{w_1, w_2,\dot, w_m} \frac{}{}
+    \min_{w_1, w_2,\dot, w_m} \sum_{i=1}^m \left\|x_i - \sum_{j\in Q_i}w_{ij}x_j\right\|_2^2 \qquad s.t.\quad \sum_{j\in Q_i}w_{ij} = 1
 $$
+最小化重构误差
 
 ##### 距离度量学习 (distance matric learning)
 

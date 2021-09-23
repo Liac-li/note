@@ -80,6 +80,8 @@ A language is regular is accepted by some DFA, the DFA must accept **only** the 
 
     Language is set of strings it accepts
 
+> If no transition at6 all from a given state on a given input symbol, the proper entry is $\emptyset$
+
 #### Equivalence of DFA's and NFA's
 
 - DFA can be turned into an NFA that accepts same languages (表达能力的等价)
