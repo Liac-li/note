@@ -15,26 +15,16 @@
 
 #### Todo-list
 
+- [ ] [Heuristic] lac3, lac3-evolution 的笔记补充
 - [ ] [DSP] 卷积的相关笔记以及自学
-  - 卷积的展缩、微分、积分的推导 
+  - 卷积的展缩、微分、积分的推导(推不动QwQ) 
 - [ ] EM 算法的 $L(\theta), \theta$ 的收敛对应
 - [x] F function in EM alg
 - [ ] EM 算法的最大化后验概率，或EM在朴素贝叶斯中的运用
 - [x] PCA 部分的推导
-- [x] 距离和内积的相互推导
 - [ ] 集成学习的几个方法的简单看看
-- [x] NFA, DFA部分笔记 (见FLA-automata)
-- [x] 第一、二章节 
-- [x] 补全词法分析部分的笔记
-- [x] Note of NFA, DFA, $\epsilon$-NFA
 - [x] Finish Note about automata (definition of DFA, acceptable language, Regular language) 
-- [x] 信号的分解
-- [x] 整理第二节课笔记
-    1. 整理一些常见信号的功率或者...w
-    2. 冲击信号以及积分
 - [ ] **周期信号都是功率信号**, 非周期可能是功率，也可能是功率信号
-- [x] ? 基本的离散序列的理解 (PPT-22)
-- [x] $A = |A|e^{j\theta}$
 - [ ] 矩阵化概率部分的数学推导和笔记补充
 
 
@@ -66,6 +56,12 @@
 * [Intro](Statistical_learning/Advanced-ML/Intro.md)
 * [Chap10-降维方法](Statistical_learning/Advanced-ML/Dimesionality-reduction.md)
 * [Chap11-特征学习](Statistical_learning/Advanced-ML/Feature-selection.md)
+
+#### 启发式搜索
+
+* [Intro](Heuristic-search&Evolutionary-Alg/Intro.md)
+* [Uniformed-search](Heuristic-search&Evolutionary-Alg/Uniformed-search.md)
+* [Local Search and Evolutionary Alg](Heuristic-search&Evolutionary-Alg/Local-search.md)
 
 **参考**：
 - [Pumpkin-book](https://github.com/datawhalechina/pumpkin-book)
