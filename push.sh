@@ -2,7 +2,7 @@
 
 DATE_msg=$(date +'%Y %b %d')
 Add_msg=$1
-echo "DATE_msg"
+echo "$DATE_msg"
 
 git add ./
 

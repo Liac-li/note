@@ -78,3 +78,16 @@ Approach
 - Branch of input files: f1, f2, f3
 - Map function: f1 to <word, value> 
 - Reduce function: merge/combine the key/value pair to final result
+
+
+## RPC (Remote procedure call)
+
+Goal: acting PAC as PC
+
+**RPC semantics under failure**
+
+- at-least-once: client retry and keep going (net error, ... )
+- at-most-once: duplicate
+- exactly-once: hard to arrange
+
+

@@ -18,7 +18,21 @@ Main idea: expand the node $n$ with the lowest cost $g(n)$
 
 ## Heuristic Function
 
+**Tree search version**
+
+> May travail the passed nodes
+
+- Optimal: if $h(n)$ is admissable -- $0 \le h(n) \le h^*(n)$ where $h^*(n)$ is the **true cost** of optimal path
+
+**Graph search version**
+
+- Optimal: if $h(n)$ is consistent -- $h(n) \le c(n, a', n') + h(n')$, where means the successor $n'$ of $n$, the true cost from $n' \to n$ is $c(n, a', n')$
+
+- Complete: branching factor $b$ is **finite** and cost ($g(n) + h(n)$) of every step exceeds some small positive constant  $\epsilon$
+
 #### 提升 $H(n)$ 的效果
+
+**Cut branch**: recode the **second best** value of siblings(means the best alternative path)
 
 **Goodness of $H(n)$**
 
@@ -26,9 +40,13 @@ If $h_1(n)$ use **less cost** to find the optimal final state than $h_2(n)$, the
 
 Therefore, we need run the programer with all of heuristic functions to measure their goodness.
 
-**Combined $H(s)$**
+**Combined $H(s)$**: $H(s) = \max\{h_1, h_2, \dots, h_n\}$
 
+We can proof it satisfy the consistence and admissability
 
+#### How to get Heuristic function
+
+TODO: add note
 
 ## Math
 
