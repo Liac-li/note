@@ -233,9 +233,12 @@ $$
     模必然为1, 为一个螺旋线， 周期为 $2\pi$
 2. 是否为周期信号 
     - $x_1[n] = \cos(n\pi / 6)$ 是， $N = 12$
-    - $x_2[n] = \cos(n/6)$ 是， $N = 12\pi$
+    - $x_2[n] = \cos(n/6)$ 是， $N = 12\pi$ 无理数，不是周期
 3. $T$ 为常数， $\omega_0 =\frac{2\pi}{T}$
     - $x(t) = t[u(t) - u(t-T)]$, 从$0\to T$ 的自 $0 \to T$ 的线性函数
     - $x(t) = \sin\omega_0t\cdot[u(t)-u(t - T)]$, 在 $0 \to T$ 上的完整的一个周期为 $T$ 的 $sin$ 函数
 
     可以把 $u(t) - u(t- T)$ 理解为一个选择子
+4. 
+  - $\delta(t) = \frac{du(t)}{dt}$
+  - $u(t) = \int_{-\infty}^t \delta(\tau)d\tau$

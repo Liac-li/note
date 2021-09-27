@@ -11,6 +11,7 @@
 |时间序列分析| [TSA21](https://www.lamda.nju.edu.cn/yehj/timeseries2021/)
 |计算机网络| [Labs](http://114.212.10.193:8080/course/net21/) | 内网访问 | |
 |启发式搜索| [HSA](http://www.lamda.nju.edu.cn/HSEA21/)
+| 分布式与并行| [Parallelism](https://cs.nju.edu.cn/lxie/parallel.htm)||[MIT 6.824](https://pdos.csail.mit.edu/6.824/schedule.html)|
 
 
 #### Todo-list
@@ -18,6 +19,7 @@
 - [ ] [Heuristic] lac3, lac3-evolution 的笔记补充
 - [ ] [DSP] 卷积的相关笔记以及自学
   - 卷积的展缩、微分、积分的推导(推不动QwQ) 
+  - 进行微分差分方程的求解
 - [ ] EM 算法的 $L(\theta), \theta$ 的收敛对应
 - [x] F function in EM alg
 - [ ] EM 算法的最大化后验概率，或EM在朴素贝叶斯中的运用
