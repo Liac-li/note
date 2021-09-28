@@ -54,6 +54,7 @@
 
 * [Intro](cs-course/FLA21/Intro.md)
 * [有穷自动机](cs-course/FLA21/Automata.md)
+* [正则表达式](cs-course/FLA21/Regular_expression.md)
 
 #### 高级机器学习
 

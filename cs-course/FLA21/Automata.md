@@ -119,8 +119,9 @@ base on string
 - $\epsilon-closure(s)$, represent as $CL(s)$
 - Extended $\delta$
 
-
 Every NFA is an $\epsilon$-NFA
+Every $\epsilon$-NFA is NFA: **removal $\epsilon$**, 
+  we do $\epsilon$-closure then do the transitions, and the Final set $F$ be (state q such that $CL(q)$ contains a state of F)
 
 ##### Summary
 
