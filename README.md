@@ -36,7 +36,8 @@
 #### 汇编
 
 * [Intro](cs-course/Compilers/Intro.md)
-* [词法分析](cs-course/Compilers/Syntax-analysis.md)
+* [词法分析](cs-course/Compilers/Lexical-analysis.md)
+* [语法分析](cs-course/Compilers/Syntax-analysis.md)
 
 #### 数字信号分析2021
 
