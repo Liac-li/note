@@ -1,19 +1,27 @@
 # Regression on TSA
 
-TODO: 完成笔记
-
 一个大的正太分布可能是多个小的正态分布组合而成的
+
+> 最优线性预测: $\hat{Y}_2 = \rho\dfrac{\sigma_2}{\sigma_1}Y_1$
 
 $$
     Y_t = f(X_t, t;\theta) - \epsilon_t
 $$
-- 
-- 
+
+- $X$ 为**独立**的变量
+- $\theta$ 为$m$ 个参数
 - $\{\epsilon_t\}$ 均值为零，方差为 $\sigma_t^2 = \sigma^2 \Sigma_{ii}$ (白噪声的假设)
 
-    $$ Cov[]
+    $$ 
+      Cov[\varepsilon_{ti}, \varepsilon_{tj}] = \sigma^2 \Sigma_{ij}
+    $$
 
 #### 对输入的变量的回归 $x_t \to y_t$
+
+线性模型假设:
+  $$
+    Y_t = \bm{x_t}^\top \bm{\theta} + \varepsilon_t
+  $$
 
 > 多元变量的回归
 
