@@ -16,20 +16,22 @@
 
 #### Todo-list
 
-- [ ] [Heuristic] lac3, lac3-evolution 的笔记补充
-- [ ] [DSP] 卷积的相关笔记以及自学
+- [ ] [**AML**] chap12~13
+- [ ] EM 算法的 $L(\theta), \theta$ 的收敛对应
+- [ ] EM 算法的最大化后验概率，或EM在朴素贝叶斯中的运用
+- [ ] [**DSP**] 对于LTI系统的几个特性的推论的笔记补充
+- [ ] Batch Normalization paper
+- [x] 集成学习的几个方法的简单看看
+- [x] [Heuristic] lac3, lac3-evolution 的笔记补充
+- [x] [DSP] 卷积的相关笔记以及自学
   - 卷积的展缩、微分、积分的推导(推不动QwQ) 
   - 进行微分差分方程的求解
   - 冲击系统冲击脉冲的响应(教材)
-- [ ] EM 算法的 $L(\theta), \theta$ 的收敛对应
 - [x] F function in EM alg
-- [ ] EM 算法的最大化后验概率，或EM在朴素贝叶斯中的运用
 - [x] PCA 部分的推导
-- [ ] 集成学习的几个方法的简单看看
 - [x] Finish Note about automata (definition of DFA, acceptable language, Regular language) 
 - [ ] **周期信号都是功率信号**, 非周期可能是功率，也可能是功率信号
-- [ ] 矩阵化概率部分的数学推导和笔记补充
-
+- [x] 矩阵化概率部分的数学推导和笔记补充
 
 ## 文件目录
 
@@ -61,6 +63,7 @@
 * [Intro](Statistical_learning/Advanced-ML/Intro.md)
 * [Chap10-降维方法](Statistical_learning/Advanced-ML/Dimesionality-reduction.md)
 * [Chap11-特征学习](Statistical_learning/Advanced-ML/Feature-selection.md)
+* [Chap13-半监督学习](Statistical_learning/Advanced-ML/Semi-supervised_learning.md)
 
 #### 启发式搜索
 
