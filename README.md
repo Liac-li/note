@@ -46,6 +46,7 @@
 * [Intro](cs-course/DSP2021/Intro.md)
 * [信号的定义](cs-course/DSP2021/signal.md)
 * [时域分析](cs-course/DSP2021/Time-domain-analysis.md)
+* [信号的傅里叶级数](cs-course/DSP2021/Fourier-series.md)
 
 #### 时间序列分析
 
