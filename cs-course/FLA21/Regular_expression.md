@@ -125,6 +125,12 @@ Problems:
   - Basis: mark pairs whit exactly one final state
   - Induction: mark $[q, r]$ if for some input symbol $a$, $[\delta(q,a), \delta(r,a)]$ is marked(feed back)
 
+  Transitionary of indistinguishable state: $a, b$ and $b, c$ are indistinguishable, then $a, c$ are indistinguishable
+
+  TODO: example
+
+##### Pumping Lemma
+
 For every RE $L$, there is an integer $n$(number of states of DFA for $L$), such that
 for every string $w$ in $L$ of length $\ge n$,
 we can write $w = xyz$ such that:
@@ -133,3 +139,17 @@ we can write $w = xyz$ such that:
 3. $\forall i\ge 0, xy^iz$ is in $L$ ( $y$ is a cycle )
 
 Pumping Lemma **To proof a language is DFA**
+
+#### Closure Properties of Regular Languages
+
+After some operating is a RE still regular?
+
+- Closure under union: $R, S$ is the regular expression of $L, M$, then the $R+S$ is teh regular expression of $L \cup M$
+- Kleene, concatenation is closure (same idea)
+- Closure under intersection: $L \cap M$
+  Do product automaton
+  - Final state: $[q, r]$ both final state in $L, M$
+- Closure under difference: $L - M$
+  Product automaton: $[q, r]$, $q$ is final of $L$, but $r$ not
+- Closure under Complementation: $\Sigma^* - L$
+- Closure under Reversal:
