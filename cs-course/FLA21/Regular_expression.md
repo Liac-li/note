@@ -77,12 +77,13 @@ $k$-path is path goes through no state numbered higher than $k$
 
 #### Decision Properties of Regular Languages
 
+> we use DFA to construct our proof of RE property
+
 Problems:
 - Is the language is finite? (DFA $\to$ finite/terminate)
 - Is the language nonempty? (make the final state 'error' state)
 - Is the smallest DFA?
   - the same language?
-
 
 - Membership Problem:
   > is sting $w$ in RE $L$
@@ -93,7 +94,7 @@ Problems:
 
 - The Emptiness Problem:
   Check the reachable states set from start state(DFS)
-- Infinite Problem: 
+- Infinite Problem:(If cycle, string will be infinite) 
   **Key idea**: if the DFA has $n$ state, and the language contains any string of length $n$ or more, then the language is infinite
   > PHP, cycle in DFA $\{0^n1^n\}$
   
@@ -106,7 +107,8 @@ Problems:
     1. eliminate all state not reachable from the start state, and the state do not reach the final state
     2. test if exist cycle in the remain transition graph
 
-    TODO: Alg to find cycles
+    Alg to find cycles (just simple DFS with visited points)
+
 - Equivalence: $L = M$? 
   we do RE production $L\times M = [q, r], q\in L, r\in M$
   - Start state: $[q_0, r_0]$ start state of $L, M$
@@ -116,7 +118,9 @@ Problems:
   $L = M$ if and only if the product automaton's language is empty
 - Containment: also the production $L \subseteq M$
   - Final $[q, r]$ for $q$ in final set of $L$, but $r$ not
+
 > Different problem, define different final state product automaton
+
 - Minimum-State DFA of a RE:
   given a DFA find the DFA with the fewest state accepting $L(A)$
 
@@ -127,7 +131,7 @@ Problems:
 
   Transitionary of indistinguishable state: $a, b$ and $b, c$ are indistinguishable, then $a, c$ are indistinguishable
 
-  TODO: example
+  And After combining indistinguishable state, it the optimal minium DFA.
 
 ##### Pumping Lemma
 
