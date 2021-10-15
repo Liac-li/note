@@ -65,6 +65,7 @@
 * [Chap10-降维方法](Statistical_learning/Advanced-ML/Dimesionality-reduction.md)
 * [Chap11-特征学习](Statistical_learning/Advanced-ML/Feature-selection.md)
 * [Chap13-半监督学习](Statistical_learning/Advanced-ML/Semi-supervised_learning.md)
+* [Chap14-概率图模型](Statistical_learning/Advanced-ML/Probability-graph.md)
 
 #### 启发式搜索
 
