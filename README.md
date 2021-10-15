@@ -16,6 +16,7 @@
 
 #### Todo-list
 
+- [ ] Markov Chain 的标准定义于学习[统计学习方法]
 - [ ] [**AML**] chap12~13
 - [ ] EM 算法的 $L(\theta), \theta$ 的收敛对应
 - [ ] EM 算法的最大化后验概率，或EM在朴素贝叶斯中的运用
@@ -52,6 +53,7 @@
 
 * [Intro](cs-course/TSA21/Intro.md)
 * [回归模型](cs-course/TSA21/Regression-TS.md)
+* [随机过程](cs-course/TSA21/Random-Process.md)
 
 #### 形式语言自动机
 
