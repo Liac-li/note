@@ -48,6 +48,7 @@
 * [信号的定义](cs-course/DSP2021/signal.md)
 * [时域分析](cs-course/DSP2021/Time-domain-analysis.md)
 * [信号的傅里叶级数](cs-course/DSP2021/Fourier-series.md)
+* [傅里叶变换](cs-course/DSP2021/FT.md)
 
 #### 时间序列分析
 
@@ -60,6 +61,7 @@
 * [Intro](cs-course/FLA21/Intro.md)
 * [有穷自动机](cs-course/FLA21/Automata.md)
 * [正则表达式](cs-course/FLA21/Regular_expression.md)
+* [上下文无关文法](cs-course/FLA21/Context-Free-Grammar.md)
 
 #### 高级机器学习
 

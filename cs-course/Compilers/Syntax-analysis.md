@@ -34,7 +34,7 @@ Output： 语法树
 
 ##### 文法的问题
 
-- 消除二义性： 同一文法生成不同的树
+- 消除二义性： 同一文法生成不同的树(对特定的一个句子)
   - matched: if...then...else
   - priority： id + id * id 
     $$
@@ -61,3 +61,44 @@ Output： 语法树
     - $A_i \to A_j\alpha$
     - $A_j \to A_i\alpha$ , 有可能循环的替换后出现直接左递归
       直接替换掉，然后归约到直接左递归
+- 提取左公因子:(简化就句型的选择)
+
+#### 自顶向下分析
+
+寻找输入串的最左推导的过程
+> 从最上的开始符号找 A-production parsing
+
+- Determine a production: recursive descent parsing
+    有点像 DFS
+    ```c++
+    code without backtrace
+
+    void A() {
+        Choose an A-production, A = X_1, ... X_n
+        for (i = 1 to n) { // 不能有左递归
+            if (X_i is a nonterminal) {
+                call produce X_i()
+            } else if (X_i equals the current input symbol a) {
+                advance the input to the next symbol
+            } else {
+                Error or back to another A-production
+            }
+        }
+    }
+    ```
+    but backtrace is inefficient
+
+- 无回溯的技术：FIRST and FOLLOW(在输入中向前看固定多个符号)
+    > expended DFS
+    - FIRST( $\alpha$ ): 可以从 $\alpha$ 推导得到的串的首符号的集合 $\alpha \Rightarrow a, a\in FIRST(\alpha)$
+    - FOLLOW( $A$ ): 可能在某些句型中紧跟在A后的**终结符号**的集合
+
+##### $LL(1)$ 文法
+
+$A\to \alpha|\beta$
+- First($\alpha$) $\cap$ First($\beta$) = $\emptyset$
+- $\alpha \to \epsilon, \beta\to \epsilon$ 不同时成立
+- $if \, \beta \to \epsilon, then \,FIRST(\alpha) \cap FOLLOW(\beta) = \emptyset$
+> 通过 FIRST， FOLLOW 可以确定的选择出 A-production 的语言
+
+#### Down to top：

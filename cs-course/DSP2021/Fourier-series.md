@@ -19,4 +19,8 @@ TODO: 三角函数基和指数函数集
 
 > Dirichlet 条件： 
 
+##### 傅里叶级数的收敛条件
 
+1. 能量条件 $\int_{-T/2}^{T/2} |x(t)|^2 dt < \infty$
+
+TODO: Add note

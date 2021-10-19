@@ -157,3 +157,10 @@ After some operating is a RE still regular?
   Product automaton: $[q, r]$, $q$ is final of $L$, but $r$ not
 - Closure under Complementation: $\Sigma^* - L$
 - Closure under Reversal:
+- Homomorphisms: on a alphabet is a function that gives a string for each symbol in that alphabet(another) $$\Sigma_1 \overset{h( )}{\rightarrow}\Sigma_2 $$
+    $h(a_1, a_2\dots a_n) = h(a_n)h(a_2)\dots h(a_n)$
+    Proof: Regular expression to regular expression in that alphabet $h(E) \to E'$
+- Inverse homomorphisms: 
+    > $h(a) \to \epsilon$ , than the place of a is ambiguous and be $a^*$
+
+TODO: RE $\iff$ pumping lemma?
