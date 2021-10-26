@@ -101,4 +101,20 @@ $A\to \alpha|\beta$
 - $if \, \beta \to \epsilon, then \,FIRST(\alpha) \cap FOLLOW(\beta) = \emptyset$
 > 通过 FIRST， FOLLOW 可以确定的选择出 A-production 的语言
 
-#### Down to top：
+#### Bottom-Up parsing：
+
+想法：从产生式来逐步替换到单独的根(a-production $\to$ nonterminal)
+> - when to reduce
+> - which production to apply
+
+归约过程：反向最右推导的句柄的剪枝
+
+**Handle**:
+
+一个Handle是可以在有 $S \Rightarrow_{rm} \alpha \beta w$, 后apply $A\to \beta$ 可以获得**上一层**的**最右推导**式子的 production $A\to\beta$为一个句柄
+
+也就是说，只要一直使用句柄进行归约，就可以得到最右推导的开始符号 $S$
+
+- 归约前后都是最右句型
+- 
+- 无二义性文法的每个最右句型都只有一个句柄

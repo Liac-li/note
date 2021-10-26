@@ -41,3 +41,77 @@ Trees, leftmost and rightmost derivations correspond
 
 **Proof**: induction base on *height*
 
+**Ambiguous is property of Grammar not Language**
+
+> ??? How to proof a grammar is unambiguous
+>> LL(1) Grammar is **unambiguous**
+>> can always figure out a production to use in the left most derivation
+> 
+> most programming language have LL(1) grammars
+
+But certain **CFL's** are *inherently ambiguous*, every grammar for the language is ambiguous ( $\{0^i1^j2^k|i=j \,or\, j=k\}$)
+
+#### Normal Forms for CFG's 
+
+##### Elimination useless variables
+
+Variable that derives nothing:
+- Consider: $S\to AB,\, A\to aA|a,\,B\to AB$
+
+- Then the production of $B$ always end with a nonterminal, then $B$ is **useless** (derives nothing), which occurs $S$ derives nothing
+
+**Discovery Algorithm**: inductively find the reachable terminals($A\to a$), to check whether $S$ derives a language
+
+we can proof, Discovery alg will discover **all** production derive terminal
+
+1. Eliminating the useless production
+2. Elimination the unreachable production
+(Ordered)
+
+##### Removing Epsilon
+
+Key idea: let $A\to X_1X_2\dots$ be a family of productions
+
+remove the nullable symbol from productions recursively
+
+Proof: 
+All variables in $A$:
+- if $w\neq \epsilon$ and $A \Rightarrow_{old}^* w$, then $A\Rightarrow_{new}^* w$
+- if $A\Rightarrow_{new}^* w$ and $w \neq \epsilon$, then $A\Rightarrow_{old}^* w$
+
+Then let $A$ be the **start symbol**, prove that $L(new) = L(old) - \{\epsilon\}$
+
+Proof base on *derivation step*
+
+##### Removing Unit Productions ($A\to B, B\to C$)
+
+Basic Idea: Find all paris $(A,B)$ such that $A\Rightarrow^* B$ by a sequence of unit productions *only*
+
+##### Chomsky normal Form
+
+
+**Steps**:
+
+- Eliminating all $\epsilon$ production
+    Do subset of the production may introduce unit production or useless variables
+- Elimination all unit production
+- Elimination all nonterminal production(useless variables)
+- Elimination all unreachable productions
+
+> Eliminating unit production will not introduce $\epsilon$-production(construction new production family)
+> Elimination useless production will not introduce any new production(only delete)
+
+**Property**:
+- no useless symbols
+- no $\epsilon$-productions
+- no unit productions
+
+ie. all production must be single terminal or length $\ge$ 2
+
+**Chomsky Normal Form**:
+A CFG whose production only be two form:
+- $A\to BC$ (length can be 2 only)
+    we can use new $A'$ corresponding to $BC$ in $S\to ABC$ reduce the production bodies' length of which greater equal 2
+- $A\to a$
+
+**Grammar in Chomsky normal form will generate a *binary* parsing tree**
