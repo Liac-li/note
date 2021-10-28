@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 DATE_msg=$(date +'%Y %b %d')
 Add_msg=$1
@@ -13,4 +13,3 @@ else
 fi
 
 git push origin master
-
