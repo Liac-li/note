@@ -25,3 +25,39 @@ Feature Functions: 人工专家对于问题的先验规则
 
 1. Marginal Distribution
 2. Parameters of distribution
+
+#### MCMC
+
+> approx inference with sampling 
+
+Problem: get teh transition matrix of markov chain
+- Metropolis-Hastings(MH alg): sampling with rejection options
+    Let transition rate as 
+    $$
+        Q(x^t|x^{t-1})A(x^t|x^{t+1})
+    $$
+    
+    Q: Propose
+    A: Accept Rate
+
+> Sampling with rejections:
+> Approx $p(x)$ which is complex with no equation, but can get the value with some $x$
+> - use $q(y), y\sim N(\mu, \sigma^2)$ with probability greater than $p(x)$, with reject rate $\frac{p(x')}{q(x')}$ 
+
+- Gibbs Sampling: (special case in MH)
+
+#### 变分推断(Variational Inference)
+
+> Intro: GMM with EM
+> 吃了万里的看着锅里的，得寸进尺，一山更比一山高
+
+TODO: 加入EM角度的优化部分和理解
+
+**变分**:
+
+因为EM中人为定义的分布 $q(\bm{z})$ 不好计算的，故而简化形式为
+$$
+    q(\bm{z}) = \prod_{i=1}^M q_i(z_)
+$$
+
+变分方法:(mean field)

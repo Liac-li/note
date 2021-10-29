@@ -17,6 +17,7 @@
 #### Todo-list
 
 - [ ] Markov Chain 的标准定义于学习[统计学习方法]
+- [ ] Markov chain 的收敛
 - [ ] [**AML**] chap12~13
 - [ ] EM 算法的 $L(\theta), \theta$ 的收敛对应
 - [ ] EM 算法的最大化后验概率，或EM在朴素贝叶斯中的运用
