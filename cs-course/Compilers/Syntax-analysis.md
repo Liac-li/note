@@ -81,35 +81,82 @@ Output： 语法树
             } else if (X_i equals the current input symbol a) {
                 advance the input to the next symbol
             } else {
-                Error or back to another A-production
+                Error or back to another A-production(Backtrace)
             }
         }
     }
     ```
     but backtrace is inefficient
 
+> Notice use the alg to generate a output string to match the input symbol
+
 - 无回溯的技术：FIRST and FOLLOW(在输入中向前看固定多个符号)
     > expended DFS
-    - FIRST( $\alpha$ ): 可以从 $\alpha$ 推导得到的串的首符号的集合 $\alpha \Rightarrow a, a\in FIRST(\alpha)$
+    - FIRST( $\alpha$ ): 可以从 $\alpha$ 推导得到的串的首符号(*terminal*)的集合 $\alpha \Rightarrow a, a\in FIRST(\alpha)$
     - FOLLOW( $A$ ): 可能在某些句型中紧跟在A后的**终结符号**的集合
 
-##### $LL(1)$ 文法
+##### $LL(1)$ 文法 
+
+> 保证总可以找到down parsing方向的文法
 
 $A\to \alpha|\beta$
+
+1. no terminal $a$ do both $\alpha$ and $\beta$ derive strings beginning with $a$
+2. at most *one* $\alpha$ and $\beta$ and derive the *empty string*
+3. if $\beta \Rightarrow^* \epsilon$, then $\alpha$ dose note derive any string beginning with a terminal in FOLLOW(A). The same with $\alpha \Rightarrow^* \epsilon$
+
 - First($\alpha$) $\cap$ First($\beta$) = $\emptyset$
 - $\alpha \to \epsilon, \beta\to \epsilon$ 不同时成立
 - $if \, \beta \to \epsilon, then \,FIRST(\alpha) \cap FOLLOW(\beta) = \emptyset$
 > 通过 FIRST， FOLLOW 可以确定的选择出 A-production 的语言
 
+**Parsing Table**:
+
+$A \to \alpha$
+
+1. For each terminal $a$ in FIRST($\alpha$) in $M[A, a]$
+2. if $\epsilon$ **in** FIRST($\alpha$), for each terminal $b$ in FOLLOW(A), add $A\to\alpha$ 
+
+> Parsing Table include all state *reachable*
+
+##### Non-recursive method
+
+Maintain a Stack
+
+```Bash
+    Input: string w, parsing table M
+
+    a <- the first symbol of w
+    X <- the top stack symbol
+
+    while (X != $) { # stack not empty
+        if (X = a) pop the stack and let a be the next symbol of w
+        else if (X is terminal) error() # end too early
+        else if (M[X, a] is an error entry) error() # invalid in LL(1)
+        else if (M[X, a] = X-> Y1, Y2,...Yk) {
+            output the production X-> ...
+            pop the stack;
+            push Yk, ... Y1 onto the stack with Y1 on top # inverse ordered
+        }
+        
+        X <- the top stack symbol
+    } 
+```
+
 #### Bottom-Up parsing：
 
-想法：从产生式来逐步替换到单独的根(a-production $\to$ nonterminal)
+想法：从产生式来逐步替换到单独的根(a-production $\to$ nonterminal) *Shift-reduce parsing*
+
+Find the production which's matched the string $w$ 
+
 > - when to reduce
 > - which production to apply
 
-归约过程：反向最右推导的句柄的剪枝
-
 **Handle**:
+
+handle is a *substring* that matched the body of production, and whose reduction represents one step along the reverse of a rightmost derivation
+
+> ??? why not leftmost
 
 一个Handle是可以在有 $S \Rightarrow_{rm} \alpha \beta w$, 后apply $A\to \beta$ 可以获得**上一层**的**最右推导**式子的 production $A\to\beta$为一个句柄
 
@@ -118,3 +165,42 @@ $A\to \alpha|\beta$
 - 归约前后都是最右句型
 - 
 - 无二义性文法的每个最右句型都只有一个句柄
+
+##### Shift-reduce
+
+Alg: shift-reduce with stack:
+- Init: Stack empty($\$$), with input ($w\$$)
+- Steps:
+    - shift zero or more symbols into stack
+    - reduce stack top as a handel
+
+Observation: handle always appears on the stack top
+
+**Conflicting**
+
+- a shift/reduce conflict
+- a reduce/reduce conflict
+
+must $LR(k)$ grammars without conflict
+
+##### $LR$ parsing
+
+Introduce item ($LR(0)$ item), to keep track of where we are in parse, to avoid *reduce/shift conflict*
+
+> $A\to X_1\cdot X_2$ means we have seen $X_1$, and hope to see a string derivable from $X_2$ 
+
+**Closure**:
+
+For $I$ is set of items for grammar $G$, CLOSURE($I$) constructed with:
+1. initially, add **every** item in $I$ to CLOSURE($I$)
+2. if $A\to \alpha\cdot B\beta$ in CLOSURE($I$), and $B\to \gamma$ is a production, then add $B\to \cdot\gamma$ to CLOSURE($I$). Apply this rule until no more new items can be added
+
+> Target: just keep track on the terminals have be seen
+
+**Goto**
+
+GOTO($I, X$) where $I$ is a set of items and $X$ is a grammar symbol, GOTO($I, X$) is the closure of the set of all items $[A\to \alpha X\cdot\beta]$ such that $[A\to \alpha\cdot X\beta]$ is in $I$
+
+> Closure for current parse state, Goto is the next parse state with action $X$
+
+TODO: $LR(0)$ algorithm
