@@ -68,3 +68,30 @@ $$
 >  对照冲激、直流时频曲线可看出:
     - 时域持续越宽的信号，其频域的频谱越窄
     - 时域持续越窄的信号，其频域的频谱越宽
+    
+#### FT 的性质
+
+- 线性: $x_1(t)\xleftrightarrow{\mathcal{F}}X_1(j\omega), x_1(t)...$, $ax_1(t)+bx_2(t)\xleftrightarrow{\mathcal{F}}bX_1(j\omega) + bX_2(j\omega)$
+- 对称特性：
+    - $x(t)\xleftrightarrow{\mathcal{F}}X(j\omega)$,  $X(t)\xleftrightarrow{\mathcal{F}}2\pi x(-j\omega)$
+    - 若 $x(t)$ 为偶函数， $X(t)\xleftrightarrow{\mathcal{F}}2\pi x(j\omega)$
+- 奇偶虚实性: 在利用欧拉公式变换后实部和虚部分离
+- 尺度变换特性： 
+    $$
+        x(t)\xleftrightarrow{\mathcal{F}} X(j\omega)  \longrightarrow \quad x(at) \xleftrightarrow{\mathcal{F}} \frac{1}{|a|}X(\frac{j\omega}{a}) $$
+    也即表现为时域压缩，则频域拉伸；拉伸时域，则频域压缩
+- 时移特性： $x(t-t_0)\xleftrightarrow{\mathcal{F}}X(j\omega)e^{-j\omega t_0}$
+
+    **调制定理**：
+    - $x(t)e^{j\omega_0 t} \xleftrightarrow{\mathcal{F}} X(j(\omega-\omega_0))$
+    - $x(t)e^{-j\omega_0 t} \xleftrightarrow{\mathcal{F}} X(j(\omega+\omega_0))$
+- 微分特性：
+    $$
+        x(t)\xleftrightarrow{FT} X(j\omega) \quad t^nx(t) \xleftrightarrow{FT} j^n\frac{d^nXj\omega}{d^n\omega}
+    $$
+    
+TODO: 微分积分特性，卷积特性
+
+
+    
+    
