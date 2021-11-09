@@ -50,6 +50,7 @@
 * [时域分析](cs-course/DSP2021/Time-domain-analysis.md)
 * [信号的傅里叶级数](cs-course/DSP2021/Fourier-series.md)
 * [傅里叶变换](cs-course/DSP2021/FT.md)
+* [采样](cs-course/DSP2021/sampling.md)
 
 #### 时间序列分析
 
