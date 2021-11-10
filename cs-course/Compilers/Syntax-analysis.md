@@ -143,7 +143,7 @@ Maintain a Stack
     } 
 ```
 
-#### Bottom-Up parsing：
+#### Bottom-Up parsing： 
 
 想法：从产生式来逐步替换到单独的根(a-production $\to$ nonterminal) *Shift-reduce parsing*
 
@@ -199,8 +199,15 @@ For $I$ is set of items for grammar $G$, CLOSURE($I$) constructed with:
 
 **Goto**
 
-GOTO($I, X$) where $I$ is a set of items and $X$ is a grammar symbol, GOTO($I, X$) is the closure of the set of all items $[A\to \alpha X\cdot\beta]$ such that $[A\to \alpha\cdot X\beta]$ is in $I$
+GOTO($I, X$) where $I$ is a *set* of items and $X$ is a grammar symbol, GOTO($I, X$) is the closure of the set of all items $[A\to \alpha X\cdot\beta]$ such that $[A\to \alpha\cdot X\beta]$ is in $I$
 
 > Closure for current parse state, Goto is the next parse state with action $X$
 
-TODO: $LR(0)$ algorithm
+
+**Use of the LR(0) Automaton** (PDA)
+
+- States: *sets* of items from the canonical LR(0) collection
+- Transitions: GOTO function
+- $S_0$: CLOSURE($\{[S'\to \cdot S]\}$), kernel closure
+
+> PDA 相关算法可以看[FLA-PDA](../FLA21/Pushdown-Automata.md)

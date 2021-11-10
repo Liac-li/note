@@ -42,6 +42,7 @@
 * [Intro](cs-course/Compilers/Intro.md)
 * [词法分析](cs-course/Compilers/Lexical-analysis.md)
 * [语法分析](cs-course/Compilers/Syntax-analysis.md)
+* [语义分析](cs-course/Compilers/Syntax-Directed-Translation.md)
 
 #### 数字信号分析2021
 

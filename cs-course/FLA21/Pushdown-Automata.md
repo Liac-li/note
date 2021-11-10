@@ -81,3 +81,69 @@ Also, we extend $\vdash \to \vdash^*$ meaning "zero or more moves"
 
 - nPDA is powerful than DPDA (回串)
 - if $L$ is a regular language, there exists a DPDA $P$ such that $L = L(P)$
+
+> RE -> DPDA(L(P)) -> NPDA
+> RE (not)-> DPEA(N(P)) -> DPDA(L(P))
+
+- Given a DPDA $P$ defined by final states, $L=L(P)$, L has a *non-ambiguous* grammar
+    However, non-ambiguous grammars  donn't have to be presented by DPDA($ww^r, S\to 0S0|1S1|\epsilon$)
+
+#### Equivalence of PDA, CFG
+
+Use CFL as bridge between CFG and PDA
+
+##### CFG -> PDA
+
+Let $L = L(G)$, construct PDA $P$, such that $N(P) = L$
+
+> ??? why use $N(P)$
+
+$P$ has:
+- One state q
+- Input symbols = terminals of $G$
+- Stack symbols = all symbols of $G$
+- Start symbols = start symbol of $G$
+- Final state: at empty stack, the input consumed is a string in $L(G)$
+
+at each step, $P$ represents some *left-sentential form* (snapshot)
+
+If $\alpha$ in $P$ stack, and $P$ has so far consumed $x$, then $P$ represent left-sentential form $x\alpha$($x$ <- terminals, $\alpha$ <- nonterminals)
+
+**Transition**:
+
+- Type1: $\delta(q, a, a) = (q, \epsilon)$ : replace $a$ with $\epsilon$ from stack (matched input)
+- Type2: If $A \to \alpha$ is production of G then $\delta(q, \epsilon, A)$ **contains** $(q, \alpha)$: guess a production of $A$ and represent the next LSF in the derivation
+    > notice $P$ is a nPDA
+
+> Use $N(P)$ to simulate left-most derivation in CFG
+    
+**Proof $N(P) = L(G)$**
+
+to show that $(q, wx, S) \vdash^* (q, x, \alpha)$ for any $x$ if and only if $S\Rightarrow^*_{lm} w\alpha$
+
+- only if:
+    - Basis: 0 steps $\alpha = S, w=\epsilon$, $S\Rightarrow^*_{lm}S$ is surely true
+    - Induction: $n \to n+1$
+        there are only $two$ case, Type1 and Type2 rules
+        - Type1: $(q, yax, S) \vdash^* (q, ax, a\alpha) \vdash (q, x, \alpha)$
+            By the IH applied to the first $n-1$ steps, $S\Rightarrow^*_{lm} ya\alpha$, but $ya = w$, so $S\Rightarrow^*_{lm} w\alpha$
+        - Type2: $(q, wx, S)\vdash^*(q, x, A\beta)\vdash (q, x, \gamma\beta)$, and $\alpha=\gamma\beta$
+    - let $x = \alpha = \epsilon$, $(q, wx, S)\vdash^* (q, \epsilon, \epsilon)$, we have $S\Rightarrow_{lm}^* w$
+
+##### PDA -> CFG
+
+we assume $L = N(P)$
+
+> Induction bases on height of stack
+
+> The construction method is to extract information from transition function of PDA to A-productions. 
+
+Set $[qXp]$ as new nonternimal of CFG and $X$ represent symbol in stack
+
+TODO: alg
+
+#### Properties of CFL
+
+- Pumping Lemma:
+
+TODO: note
