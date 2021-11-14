@@ -185,7 +185,10 @@ must $LR(k)$ grammars without conflict
 
 ##### $LR$ parsing
 
-Introduce item ($LR(0)$ item), to keep track of where we are in parse, to avoid *reduce/shift conflict*
+Item: An LR(0) item of a grammar G is a production of G with a dot at some position of the body
+
+> Introduce item ($LR(0)$ item), to keep track of where we are in parse, to avoid *reduce/shift conflict*
+
 
 > $A\to X_1\cdot X_2$ means we have seen $X_1$, and hope to see a string derivable from $X_2$ 
 
@@ -195,7 +198,7 @@ For $I$ is set of items for grammar $G$, CLOSURE($I$) constructed with:
 1. initially, add **every** item in $I$ to CLOSURE($I$)
 2. if $A\to \alpha\cdot B\beta$ in CLOSURE($I$), and $B\to \gamma$ is a production, then add $B\to \cdot\gamma$ to CLOSURE($I$). Apply this rule until no more new items can be added
 
-> Target: just keep track on the terminals have be seen
+> Target: just keep track on the terminals have be seen, and all valid next movement (productions)
 
 **Goto**
 
@@ -203,6 +206,28 @@ GOTO($I, X$) where $I$ is a *set* of items and $X$ is a grammar symbol, GOTO($I,
 
 > Closure for current parse state, Goto is the next parse state with action $X$
 
+**Constructing an SLR-parsing table**
+INPUT: An augmented grammar G0 . OUTPUT: The SLR-parsing table functions ACTION and GOTO for G0 
+
+METHOD:
+1. Construct $C=\{I_0, I_1, \dots, I_n\}$, the collection of sets of LR(0) items for
+$G_0$.
+2. State $i$ is constructed from $I_i$ . The parsing actions for state $i$ are determined as follows:
+    (a) If $[A \to \alpha \cdot a\beta]$ is in $I_i$ and $GOTO(I_i, a) = I_j$ , then set $ACTION[i, a]$ to *shift j* Here $a$ must be a terminal. (continue reading input string to match $A$)
+    (b) If $[A \to \alpha\cdot]$ is in $I_i$ , then set $ACTION[i, a]$ to *reduce $A \to \alpha$* for all $a$ in FOLLOW(A); here $A$ may not be $S'$ (finish match $A$)
+    (c) If $[S' \to S\cdot]$ is in $I_i$, then set $ACTION[i, \$]$ to *accept* (finish match $S$)
+    
+   > If any conflicting actions result from the above rules, **we say the grammar is not SLR(1)**. The algorithm fails to produce a parser in this case.
+3. The goto transitions for state $i$ are constructed for all nonterminals $A$ using the rule: If $GOTO(I_i , A) = I_j$ , then $GOTO[i, A] = j$ 
+4. All entries not defined by rules (2) and (3) are made *error*
+5. The initial state of the parser is the one constructed from the set of items containing $[S' \to S]$
+
+- Shift: 
+    -  push internal stack symbol onto stack, which represents in internal steps in production $A\to B$
+    - consume a input symbol (terminal)
+- Reduce: 
+    - pop $|\beta|$ off stack$A\to \beta$, with we pushed before when matching input string. 
+    - push $GOTO(t, A)$ onto stack, representing we have matched $A$-production
 
 **Use of the LR(0) Automaton** (PDA)
 
@@ -211,3 +236,13 @@ GOTO($I, X$) where $I$ is a *set* of items and $X$ is a grammar symbol, GOTO($I,
 - $S_0$: CLOSURE($\{[S'\to \cdot S]\}$), kernel closure
 
 > PDA 相关算法可以看[FLA-PDA](../FLA21/Pushdown-Automata.md)
+
+##### Ambiguous Grammar in LR
+
+- **Every** ambiguous grammar fails to be LR
+
+With an ambiguous grammar, we can specify the special-case constructs by carefully *adding new productions* to the grammar
+
+1. Add precedence on some terminals: change the transition function in PDA
+    > $*$ take precedence over $+$ to avoid reduce/shift conflict given $E+E$ and see $*E$, to select *reduce $E\to E+E$* or *shift $E\to E*E$*
+2. specify kinds of *error* in goto table

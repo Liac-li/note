@@ -115,3 +115,20 @@ $$
 $$
 
 变分方法:(mean field)
+
+#### Topic model
+
+> From GMM and K-means
+
+有向图模型那个
+
+- 基本单元：
+    - words
+    - document: don't consider order of words in document, (bag-of-words)
+    - topic: set(sequence) of relevant words
+
+> CRP: China Restaurant Process(Dirichlet)
+> 等价类重新划分的问题 
+> IPP: India 
+
+TODO
