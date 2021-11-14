@@ -94,7 +94,55 @@ $$
 
 ##### supervised learning
 
-##### unsupervised learning
+给定了状态观测对$\{(O_1, I_1), \dots \}$, 直接利用**最大似然**
+
+##### unsupervised learning(Baum-Welch Alg)
+
+> EM
+
+给定 $\bm{O}$ 求 $\lambda = (A, B, \pi)$, $P(\bm{O}|\lambda) = \sum_{\bm{I}}P(\bm{O|I},\lambda)P(\bm{I}|\lambda)$
+
+- E步：
+    $$
+        Q(\lambda, \lambda_t) = \sum_{I} \log P(O, I|\lambda)P(O, I|\lambda_t)
+    $$ 
+
+    因为 $P(O, I|\lambda)$ 为已知形式的量， 为 
+    $$
+        \begin{align*}
+        P(O, I|\lambda) &= \pi_{i_1}b_{i_1}(o_1)\cdot a_{i_1, i_2} b_{i_1}(o_2)\cdot a_{i_2,i_3}b_{i_3}(o_3)\dots\\
+        &= \prod_{i} P(X_i = i_i)P(o_i|x_i)P(X_{i+1} = i_j|x_i) 
+        \end{align*}
+    $$
+    
+    所以Q函数形式转换为:
+    $$
+        \begin{align*}
+        Q(\lambda, \lambda_t) &= \sum_{I}\left(\log \pi_{i_1} + \sum_{t=1}^{T-1}\log a_{i_t, i_{t+1}}+ \sum_{t=1}^{T}b_{i_t}(o_t)\right)P(O, I|\lambda_t)\\
+        \end{align*}
+    $$
+    此处我们假设观测序列长度为 $T$, 之后我们做 $\lambda = \arg\max_{\lambda} Q(\lambda, \lambda_t)$
+- M 步
+    1. $\sum_I \log \pi_{i_1}P(O, i_1=i|\lambda_t)$
+        做 langrage 乘子法得到一个Langrage函数:
+        $$
+            L(\pi_{i_1}, \alpha) = \sum_I \log \pi_{i_1}P(O, i_1=i|\lambda_t) + \alpha\left(\sum_{i=1}^N \pi_i - 1 \right)
+        $$
+        
+        做偏导有
+
+        $$
+            \begin{align*}
+                \frac{\partial L}{\partial \pi} &= \sum_{I}P(O, i_1 = i|\lambda_t)\frac{1}{\pi_{i_1}} + \sum_{i=1}^N \alpha = 0\\
+                \Rightarrow & \\
+                &\sum_{i=1}^N P(o, i_1 = i|\lambda_t) + \sum_{i=1}^N \alpha\pi_i = 0\\
+                \Rightarrow & \\
+                & \alpha = \frac{\sum_{i=1}^NP(O, i_1 = i|\lambda_t)}{\sum_{i=1}^N \pi_i} = -P(O|\lambda_t)
+            \end{align*}
+        $$
+        
+        带回原式子有 $\hat\pi_i = \frac{P(O, i_1=i|\lambda_t)}{P(O|\lambda_t)}$
+    
 
 #### Inference
 
