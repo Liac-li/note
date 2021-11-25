@@ -67,6 +67,7 @@
 * [正则表达式](cs-course/FLA21/Regular_expression.md)
 * [上下文无关文法](cs-course/FLA21/Context-Free-Grammar.md)
 * [带有栈的自动机模型](cs-course/FLA21/Pushdown-Automata.md)
+* [图灵机](cs-course/FLA21/TM.md)
 
 #### 高级机器学习
 
@@ -75,6 +76,7 @@
 * [Chap11-特征学习](Statistical_learning/Advanced-ML/Feature-selection.md)
 * [Chap13-半监督学习](Statistical_learning/Advanced-ML/Semi-supervised_learning.md)
 * [Chap14-概率图模型](Statistical_learning/Advanced-ML/Probability-graph.md)
+* [Chap15-规则学习](Statistical_learning/Advanced-ML/Rules_learning.md)
 * [习题课](Statistical_learning/Advanced-ML/习题.md)
 
 #### 启发式搜索
