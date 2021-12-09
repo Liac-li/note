@@ -112,3 +112,30 @@ $$
 ----
 
 ## 离散傅里叶变换 (DTFT - Discrete-Time Fourier Transform)
+
+$$
+    \begin{align*}
+        x[n] &= \frac{1}{2\pi} \int_{2\pi} X(e^{j\omega}) e^{j\omega n} d\omega \\
+        X(e^{j\omega}) &= \sum_{n=-\infty}^{\infty} x[n]e^{-j\omega n}
+    \end{align*}
+$$
+
+> hint: 周期信号 $\tilde{x}[n]$ 的傅里叶级数 $a_k$ 可以用一个有限长的序列$x[n]$ 的傅里叶变换的等间隔样本来表示
+
+注意到： 频率上相差 $2\pi$ 的复指数信号是一样的，也即 *$X(e^{j\omega})$ 是周期的*
+
+> 一个 LTI 系统的频率相应是该系统单位脉冲响应的傅里叶变换 
+
+#### DTFT 的性质
+
+- 
+
+- 帕赛瓦尔定理:
+    $$
+        \sum_{n=-\infty}^{\infty} |x[n]|^2 = \frac{1}{2\pi} \int_{2\pi} |X(e^{j\omega})|^2 d\omega
+    $$
+    
+
+## FFT
+
+TODO

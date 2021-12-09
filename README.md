@@ -16,12 +16,10 @@
 
 #### Todo-list
 
-- [ ] Markov Chain 的标准定义于学习[统计学习方法]
-- [ ] Markov chain 的收敛
-- [ ] [**AML**] chap12~13
+- [ ] FS, FT, DFT 的来回的推导与区别以及直观理解
 - [ ] EM 算法的 $L(\theta), \theta$ 的收敛对应
 - [ ] EM 算法的最大化后验概率，或EM在朴素贝叶斯中的运用
-- [ ] [**DSP**] 对于LTI系统的几个特性的推论的笔记补充
+- [x] [**DSP**] 对于LTI系统的几个特性的推论的笔记补充
 - [ ] Batch Normalization paper
 - [x] 集成学习的几个方法的简单看看
 - [x] [Heuristic] lac3, lac3-evolution 的笔记补充
@@ -32,7 +30,6 @@
 - [x] F function in EM alg
 - [x] PCA 部分的推导
 - [x] Finish Note about automata (definition of DFA, acceptable language, Regular language) 
-- [ ] **周期信号都是功率信号**, 非周期可能是功率，也可能是功率信号
 - [x] 矩阵化概率部分的数学推导和笔记补充
 
 ## 文件目录
@@ -68,6 +65,7 @@
 * [上下文无关文法](cs-course/FLA21/Context-Free-Grammar.md)
 * [带有栈的自动机模型](cs-course/FLA21/Pushdown-Automata.md)
 * [图灵机](cs-course/FLA21/TM.md)
+* [可决定行](cs-course/FLA21/PNP.md)
 
 #### 高级机器学习
 
