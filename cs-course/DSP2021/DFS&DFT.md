@@ -126,6 +126,27 @@ $$
 
 > 一个 LTI 系统的频率相应是该系统单位脉冲响应的傅里叶变换 
 
+##### 一种另外的理解方式
+
+我们从一个连续时间上的信号来定义一个离散时间下的信号:
+
+$$
+  x[n] = x_s(t) = \sum_{k=-\infty}^{\infty} x(t)\delta(t - kT)  = \sum_{k=-\infty}^{\infty} x(kT)\cdots \to \sum_{k=-\infty}^{\infty} x[n]\delta(t-nT)
+$$
+
+可以看到其实 $x_s(t)$ 是一个连续时间函数，我们对其做FT
+
+$$
+  \begin{align}
+    \mathcal{F}[x_s(t)] &= \int_{-\infty}^{\infty} \sum_{k=-\infty}^{\infty}  x(t)\delta(t-k) dt \\
+      &= \sum_{n=-\infty}^{\infty} x[n]\int_{-\infty}^{\infty} \delta(t-nT) e^{-j\omega t} dt \\
+      &= \sum_{n=-\infty}^{\infty} x[n] e^{-j\omega nT} \quad (\omega_0 = \omega T)\\
+      &= \sum_{n=-\infty}^{\infty} x[n] e^{-j\omega_0 n}
+  \end{align}
+$$
+
+可见，得到了DTFT的公式
+
 #### DTFT 的性质
 
 - 
