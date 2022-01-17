@@ -187,6 +187,8 @@ must $LR(k)$ grammars without conflict
 
 Item: An LR(0) item of a grammar G is a production of G with a dot at some position of the body
 
+> Kernel item: $S \to \cdot S$, the initial non-terminal symbol
+
 > Introduce item ($LR(0)$ item), to keep track of where we are in parse, to avoid *reduce/shift conflict*
 
 

@@ -168,7 +168,8 @@ Non-Decision Properties
     TODO: CYK note
 - Testing Infiniteness:
     - use pumping lemma constant $n$
-    - if there is a string in language of length between $n$ and $2n-1$, then the language if infinite; otherwise not
+    - if there is a string in language of length between $n$ and $2n-1$, then the language is infinite; otherwise not
+  > $2n \to 2n-1$ means more then a parse tree layer, but not enough to grow deeper (need to pumping)
 
 
 ##### Closure Properties

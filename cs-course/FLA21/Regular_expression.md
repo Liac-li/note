@@ -162,5 +162,3 @@ After some operating is a RE still regular?
     Proof: Regular expression to regular expression in that alphabet $h(E) \to E'$
 - Inverse homomorphisms: 
     > $h(a) \to \epsilon$ , than the place of a is ambiguous and be $a^*$
-
-TODO: RE $\iff$ pumping lemma?
