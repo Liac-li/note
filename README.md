@@ -101,3 +101,5 @@
 1. 《统计学习方法》 - 李航:w
 2. 《机器学习》 - 周志华， 《Pumpkin book》 - 
 - [Map Reduce](https://pdos.csail.mit.edu/6.824/papers/mapreduce.pdf)
+
+- 一种基于人工智能的零售业仓库管理所下系统
