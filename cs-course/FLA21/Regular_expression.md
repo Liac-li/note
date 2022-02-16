@@ -75,4 +75,90 @@ $k$-path is path goes through no state numbered higher than $k$
 - $\empty$ is annihilator for concatenation
 - $\epsilon$ is identity for concatenation
 
-TODO: Decision property of RE
+#### Decision Properties of Regular Languages
+
+> we use DFA to construct our proof of RE property
+
+Problems:
+- Is the language is finite? (DFA $\to$ finite/terminate)
+- Is the language nonempty? (make the final state 'error' state)
+- Is the smallest DFA?
+  - the same language?
+
+- Membership Problem:
+  > is sting $w$ in RE $L$
+
+  simulate the DFA $A$ of $L$ on the sequence of input symbols forming $w$
+
+  DFA is more simply than NFA
+
+- The Emptiness Problem:
+  Check the reachable states set from start state(DFS)
+- Infinite Problem:(If cycle, string will be infinite) 
+  **Key idea**: if the DFA has $n$ state, and the language contains any string of length $n$ or more, then the language is infinite
+  > PHP, cycle in DFA $\{0^n1^n\}$
+  
+  > but above may not terminated
+
+  **Second key idea**: if there is a string of length $\ge n$(= the number of DFA), than there must be a string of length between $n$ and $2n-1$ (we can shorten all string length over $2n$ to $[n, 2n-1]$)
+  > will terminated, but very slow
+
+  **Finding Cycles**:
+    1. eliminate all state not reachable from the start state, and the state do not reach the final state
+    2. test if exist cycle in the remain transition graph
+
+    Alg to find cycles (just simple DFS with visited points)
+
+- Equivalence: $L = M$? 
+  we do RE production $L\times M = [q, r], q\in L, r\in M$
+  - Start state: $[q_0, r_0]$ start state of $L, M$
+  - Transition: $\delta([q,r], a) = [\delta_L(q, a),  \delta_M(r, a)]$
+  - Final state: $[q, r]$ one of the $q$ or $r$ is the final state of $L, M$, (which meaning if the production DFA accept a sting $w$, than $L, M$ not equiv)
+
+  $L = M$ if and only if the product automaton's language is empty
+- Containment: also the production $L \subseteq M$
+  - Final $[q, r]$ for $q$ in final set of $L$, but $r$ not
+
+> Different problem, define different final state product automaton
+
+- Minimum-State DFA of a RE:
+  given a DFA find the DFA with the fewest state accepting $L(A)$
+
+  Distinguish: if a string $w$ from $a, b$ but only one DFA accept $w$, than the $w$ distinguish $a, b$
+
+  - Basis: mark pairs whit exactly one final state
+  - Induction: mark $[q, r]$ if for some input symbol $a$, $[\delta(q,a), \delta(r,a)]$ is marked(feed back)
+
+  Transitionary of indistinguishable state: $a, b$ and $b, c$ are indistinguishable, then $a, c$ are indistinguishable
+
+  And After combining indistinguishable state, it the optimal minium DFA.
+
+##### Pumping Lemma
+
+For every RE $L$, there is an integer $n$(number of states of DFA for $L$), such that
+for every string $w$ in $L$ of length $\ge n$,
+we can write $w = xyz$ such that:
+1. $|xy| \le n$
+2. $|y| > 0$ ( not $\epsilon$ )
+3. $\forall i\ge 0, xy^iz$ is in $L$ ( $y$ is a cycle )
+
+Pumping Lemma **To proof a language is DFA**
+
+#### Closure Properties of Regular Languages
+
+After some operating is a RE still regular?
+
+- Closure under union: $R, S$ is the regular expression of $L, M$, then the $R+S$ is teh regular expression of $L \cup M$
+- Kleene, concatenation is closure (same idea)
+- Closure under intersection: $L \cap M$
+  Do product automaton
+  - Final state: $[q, r]$ both final state in $L, M$
+- Closure under difference: $L - M$
+  Product automaton: $[q, r]$, $q$ is final of $L$, but $r$ not
+- Closure under Complementation: $\Sigma^* - L$
+- Closure under Reversal:
+- Homomorphisms: on a alphabet is a function that gives a string for each symbol in that alphabet(another) $$\Sigma_1 \overset{h( )}{\rightarrow}\Sigma_2 $$
+    $h(a_1, a_2\dots a_n) = h(a_n)h(a_2)\dots h(a_n)$
+    Proof: Regular expression to regular expression in that alphabet $h(E) \to E'$
+- Inverse homomorphisms: 
+    > $h(a) \to \epsilon$ , than the place of a is ambiguous and be $a^*$
