@@ -23,4 +23,6 @@ zhangyk@lamda.nju.edu.cn - 张逸凯
 2. Define loss function for the training data
     $e = |\bm{y} - \hat{\bm{y}}|$ Mean absolute error(MAE) 
     $e = (\bm{y} - \hat{\bm{y}})^2$ Mean square error(MSE)
+    
+    Scaler-by-vector gradient $\nabla L_{\theta}$
 3. Optimization
