@@ -19,10 +19,18 @@ zhangyk@lamda.nju.edu.cn - 张逸凯
 
 ## ML & DL
 
-1. Define function with unknown paranmeters
+1. Define function with unknown parameters
 2. Define loss function for the training data
     $e = |\bm{y} - \hat{\bm{y}}|$ Mean absolute error(MAE) 
     $e = (\bm{y} - \hat{\bm{y}})^2$ Mean square error(MSE)
     
     Scaler-by-vector gradient $\nabla L_{\theta}$
 3. Optimization
+    - Use mini-batch to update the parameters
+    - Epoch: pass through all batches
+    
+Increase complexity of model:
+1. more layers
+2. larger layers size(more nodes)
+
+> Use ReLU function representing **hard sigmoid**
