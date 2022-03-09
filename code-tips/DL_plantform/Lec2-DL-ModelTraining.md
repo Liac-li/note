@@ -47,3 +47,12 @@ On high dimension of parameter, thus, a most of cases are saddle point. (select 
     *But* may stack on point where model data has small gradient at.(stability of gradients)
     
 - Momentum
+
+#### Adaptive learning rate
+
+training stuck not equal small gradient (at some convex valley)
+
+- Root mean sqrt 
+
+- RMSProp: give more weight to current gradient
+- Adam: RMSProp + Momentum
