@@ -64,4 +64,21 @@ F1 score: Precision & recall 都均衡 (最大在 $(0.5, 0.5)$)
 
 - AUC-PR: 更为的强力
 
+**Bias-variance Decomposition**
+
+> 错误从哪里来
+
+在假设 $y = F(x)$ 是从 ground truth 采样得来的话，则唯一的随机变量为 $\mathcal{D}$ 训练集
+
+$$
+    E_D[(f(x; D) - F(x))^2] = (E_D[f(x;D)] - F(x))^2 + E_D[(f(x;D) - E_D(x;D))^2]
+$$
+
+也可以视为：平方误差 = bias^2 + variance
+
+- Bias：与训练集无关，是与拟合函数 $f$ 确定的
+- Variance：训练集采样的差异会带来预测的差异
+
+每个数据点计算的
+
 
