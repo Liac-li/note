@@ -25,6 +25,19 @@ Impractical to condition on everything before
         $$
             P(W) \approx \prod_{cur}^n P(w_{cur}|w_{cur-1:cur-k})
         $$
+> Auto-regressive => all ar model is Language model
+
+- Problems
+    - Sparsity problem
+        - Smoothing: laplacian smooth $\frac{n + 1}{m + |V|}$
+        - reduce the $n$, bigram -> unigram $\frac{P(x)}{P(w_{i-k}:w_{i-1})} \to \frac{P(x)}{P(w_{i-k+j}:w_{i-1})}$
+    - Storage problem
+        - Parameters: $k \to |V|^{k+1}$
+    - use dictionary:
+        - less in verity
+        - with personal own subjective experience 
+
+Therefore, LM is applied to predict the next word
         
 A simple linear graphic model
 
@@ -40,6 +53,34 @@ A simple linear graphic model
 
 - calculate probability on syntax not on the sematic (considering long term dependency)
 
+## Word embedding
+
+#### Discrete representing
+
+#### Distribution representing
+
+use a dense vector in lower dimension (than one-hot)
+
+key: **word's sematic meaning can be represented with its context** 
+
+> *We shall know a word by the company it keeps*
+
+**Word2Vec**
+
+- Continuous bag of words
+    - likelihood function
+    $$
+        L(\theta) = \prod_{i=0}^n P(w_i | w_o; \theta)
+    $$
+    - loss function
+    $$
+        J(\theta) = -\frac{1}{n}L(\theta)
+    $$
+    - Problem:
+        - Softmax need to pass through all vocabulary at each step => use negative sample
+- skip-gram 
+
+**GloVe**
 
 
 
