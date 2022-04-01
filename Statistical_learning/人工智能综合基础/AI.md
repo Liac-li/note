@@ -71,6 +71,7 @@ we consider two player -> Min Max, zero-sum games
     - deterministic v.s. chance
     - perfect v.s. partially observable information
 
+
 - alpha-beta pruning
 - search order is important
 - heuristic function: how to decision
@@ -78,13 +79,54 @@ we consider two player -> Min Max, zero-sum games
 
 ##### Bandits & MCTS
 
-- epsilon-greedy; upper-confidence bound;
+- epsilon-greedy
+    with $\epsilon$ to balance exploration and exploitation 
+- Softmax to approx the distribution
+    $$
+        P(k) = \frac{e^{\frac{Q(k)}{\tau}}}{\sum_{i=1}^K e^{\frac{Q(i)}{\tau}}}
+    $$
+- upper-confidence bound
+   average reward + upper confidence bound (choose the largest value)
+   $$
+        Q(k) + \sqrt{\frac{2\ln n}{n_k}}
+   $$
+   > optimistic estimate; will always get the best bandit
+   
+**MCTS**
+
+Bandit-based phase + random phase
+
+use bandit model on each step on tree nodes, use random roll out to get the cost (distance to the goal)
+
+- Optimal? after infinite tries
+    > compare with alpha-beta pruning, no need of heuristic function
  
 ##### General space search
+ 
+get a start point in solution space, and evaluate the start point
+
+**Evaluation**
+
+> Zeroth-order optimization
+> convergence: with $P(x^* | x) > 0$
+
+- hill climbing: use explore the nearest activations
+- purely random search: optimal with infinite sampling
+- simulated annealing: explore when the temperature is high (accept a not that good solution)
+- genetic algorithm
+
+Backtracking search example:
+- a type of DFS
+- with forward checking ???
+    TBD
+- problem structure
 
 ##### constraint satisfaction search
 
 #### Knowledge
+
+1. Removing conflicts with the knowledge base after enumeration
+2. Inference & resolution
 
 ##### Bayesian
 

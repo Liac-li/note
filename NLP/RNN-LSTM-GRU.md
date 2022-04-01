@@ -28,3 +28,8 @@ $$
     $$
         J = \frac{1}{T} \sum_{t=1}^T J^t(\theta)
     $$
+    
+## Tips:
+
+- use word vector to represent sentence:
+    - Average Pooling $\bm{s} = \sum_{i=1}^L \bm{v_i} / L$
