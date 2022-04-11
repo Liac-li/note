@@ -90,4 +90,64 @@ Goal: acting PAC as PC
 - at-most-once: duplicate
 - exactly-once: hard to arrange
 
+## Targets:
+
+#### Implementation
+
+#### Performance
+
+if use 2x computers to get 2x performance is a big hammer in distributed computation
+    
+#### Fault tolerance
+    
+in huge number of computers, at least some of those will crash per day
+
+- Availability
+- Recoverability
+- Replication
+
+#### Consistency
+
+Huge distributed storage system
+
+`Put(key, value)` + `Get(key) -> value`
+
+- If with multiple copies in system, synchronization is a problem
+- Strong & Weak consistency
+
+## Map Reduce
+
+write and run on giant distributed computation system
+
+- Multiple input files
+- Map function on each input file
+- Reduce function to collection all key-value pairs with same keys
+
+
+> Input 1 $\to {map}$ (key, val) pairs, (a, 1), (b, 1)
+> Input 2 $\to$ (a, 2)
+> Input 3
+
+**Word counting task**
+
+a easy way to programming for those who has no ideas on what's to do
+
+```Bash
+Map(K, V) # key->input files; V->text
+    split v into words
+    for each word w
+        emit(w, '1')
+```
+
+```Bash
+Reduce(K, V) # k-> words, v->count
+    emit(len(v))
+```
+
+Tricks:
+1. `map` work on local machine (computation & store result)
+2. `reduce` involves network communication
+
+
+
 
