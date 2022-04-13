@@ -2,6 +2,7 @@
 
 DATE_msg=$(date +'%Y %b %d')
 Add_msg=$1
+REMOTES="origin github nju-git"
 echo "$DATE_msg"
 
 git add ./
@@ -12,4 +13,8 @@ else
 	git commit -m "Update: $DATE_msg -- $Add_msg" --allow-empty
 fi
 
-git push origin master
+for re in $REMOTES
+do 
+	git push "$re"
+done
+# git push origin master
