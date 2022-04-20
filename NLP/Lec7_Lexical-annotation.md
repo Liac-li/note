@@ -50,3 +50,33 @@ $$
     P(W, T) = \prod_i P(t_i | t_{i-1}) P(w_i|t_i)\quad \text{(bigram)}
 $$
 
+Target: parameters estimation: ($\bm{\lambda} = (A, B, \bm{\pi})$)
+
+Tags are hidden state, and words are observation
+
+> PER -> O -> OBJ -> ...
+> Jeff   is   ill
+
+In supervised training, use counting to approx EM method
+
+**In lexical annotation**
+
+Train: Encoder
+Inference: Decoder
+    $$
+        \begin{aligned}
+            \hat{t}_{1:t} &= \arg\max_{t_{1:t}} P(t_{1:t}|w_{1:t})\\
+            &= \arg\max \frac{P(w_{1:n}|P(t_{1:n}))P(t_{1:n})}{P(w_{1:n})}\\
+            &= \arg\max P(w_{1:n}|t_{1:n})P(t_{1:n})\\
+            &= \arg\max \prod_{i=1}^n P(w_i|t_i) \cdot \prod_{i=1}^n P(t_{i}|t_{i-1})
+        \end{aligned}
+    $$
+    
+- Speed up: Viterbi algorithm
+    TODO: TBD
+    
+Problem in HMM:
+1. Estimate by counting: sparse problem
+2. Generative model:
+3. markov assumption: may not hold
+4. Supervised model 
