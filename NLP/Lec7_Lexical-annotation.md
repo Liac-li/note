@@ -80,3 +80,19 @@ Problem in HMM:
 2. Generative model:
 3. markov assumption: may not hold
 4. Supervised model 
+
+#### CRF
+
+HMM transfer posterior probability to prior, in CRF, to module the posterior probability $\hat{y} = \argmax_{y\in \mathcal{Y}} P(y|x)$
+
+
+$$
+    P(y|x) = softmax\left(\sum_{k=1}^K w_k F_k(x, y)\right)
+$$
+
+$F_k(...)$ for feature function
+
+$$
+   F_k (X, Y) = \sum_{i=1}^n f_k(y_{i-1}, y_i, X, i) 
+$$
+
