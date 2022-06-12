@@ -271,8 +271,90 @@
 
 ## 词向量问题
 
+> n-gram 带来的稀疏性问题，降低到更小的 n-1 gram 上
+
+#### Word2Vec
+
+使用周围词去预测中心词
+
+    $$
+        \max P(w_c | w_o, \theta)
+    $$
+    
+1. 周围词取平均
+    $$
+        v_o = \frac{1}{2k} \sum_{j \in [i-k, i+k], j\neq i} w_j
+    $$
+2. 使用 Softmax 和内积作为相关性
+    $$
+        P(w_i | w_o; \theta) = \frac{\exp v_o^T v_i}{\sum_{j=1}^{|V|} \exp v_o^T v_j}
+    $$
+3. 优化:
+
+    $$
+        \begin{aligned}
+        J(\theta) &= -\log P(w_i| w_o; \theta)\\
+           &= -u_o^T v_i +  \log \sum \cdots
+       w\end{aligned}
+    $$
+4. 加速: Softmax 的空间过大，修正为一个副采样的内容
+
+#### GloVe
+
+$$
+    J = \sum_{i, j = 1}^{|V|} f(X_{ij})\cdot (v_i^Tv_j + b_i + b_j - \log X_{ij})^2
+$$
+
 ## 基于神经网络的语言模型
 
-## 与训练模型
+## RNN
+
+- RNN:
+    $$
+        \begin{aligned}
+            O &= Softmax(W_o H + b_o)\\
+            H &= f(W_h H_{prev} + W_i \bm{e} + b)\\
+            e &= embedding
+        \end{aligned}
+    $$
+    
+    Loss function: CE
+    
+- LSTM:
+
+    forget, input, output gates
+
+    $$
+        \begin{aligned}
+            f_t &= \sigma(W_f h_{t-1} + U_f x_t + b_f)\\
+            i_t &= \sigma(W_i h_{t-1} + U_i x_t + b_i)\\
+            o_t &= \sigma(W_o h_{t-1} + U_o x_t + b_o)\\
+            \hat{C} &= tanh(W_c h_{t-1} + U_c x_t + b_c)\\
+            C_t &= f_t * C_{t-1} + i_t * \hat{C_t}\\
+            h_t &= o_t * tanh(C_t)
+        \end{aligned}
+    $$
+    
+- GRU
+
+    Update, reset gates
+    
+    $$
+        \begin{aligned}
+            z_t &= \sigma(W_u h_{t-1} + U_u x_t + b_u)\\
+            r_t &= \sigma(W_r h_{t-1} + U_r x_t + b_r)\\
+            \hat{h} &= tanh(W_h(r_t * h_{t-1}) + U_h x_t + b_h)\\
+            h_t &= (1 - u_t) * h_{t-1} + z_t * \hat{h}_t
+        \end{aligned}
+    $$
+
+**Problems**
+
+- Gradient Vanishing: ReLU, residual connection
+- Gradient explosion: Gradient Clip
+
+## 预训练模型
+
+
 
 ## 机器翻译
