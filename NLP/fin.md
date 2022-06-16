@@ -105,7 +105,7 @@
     
 - 线性语言模型:
     $$
-        P_{\bm{w}}(Y = y | X = x) = \frac{\exp \bm{w}\cdot \phi(x, y)}{\sum_{y' \in \mathcal{Y}}} \exp \bm{w} \cdot \phi(x, y')
+        P_{\bm{w}}(Y = y | X = x) = \frac{\exp \bm{w}\cdot \phi(x, y)}{\sum_{y' \in \mathcal{Y}} \exp \bm{w} \cdot \phi(x, y')}
     $$
     
     转向了特征工程的打分函数 $\phi()$ 的设计
@@ -228,7 +228,10 @@
 
     **Multi-Task**
     
+    From different domain and share some representation in deeper layers;
+    
     数据不足的情况下同时训练多个任务的模型，多个任务互有联系和区别
+
 
 ## Lec8: Lexical Analysis
 
@@ -277,9 +280,9 @@
 
 使用周围词去预测中心词
 
-    $$
-        \max P(w_c | w_o, \theta)
-    $$
+$$
+    \max P(w_c | w_o, \theta)
+$$
 
 1. 周围词取平均
     $$
@@ -454,7 +457,7 @@ TODO: Decode $y$ with viterbi
     $$
     
     $$
-        \pord_{n=1}^4 p_n^{w_n} \quad w_n = \frac{1}{4}
+        \prod_{n=1}^4 p_n^{w_n} \quad w_n = \frac{1}{4}
     $$
     
     **引入长度过短惩罚**
