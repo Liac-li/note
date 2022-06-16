@@ -53,7 +53,7 @@
     **If training model by counting will lead to zero probability problem** => do smoothing
     
 - Linear Model
-    
+  
     Define a score function $\psi(x, y) = \bm{\theta}^T\bm{f}(x, y)$
     
     Training: find a proper weight $\theta$ given function and labeled dataset (**gradient method**)
@@ -102,7 +102,7 @@
             where $\lVert \lambda \rVert_1 = 1$
             
             > combine bi-gram, 1-gram and zero gram
-            
+    
 - 线性语言模型:
     $$
         P_{\bm{w}}(Y = y | X = x) = \frac{\exp \bm{w}\cdot \phi(x, y)}{\sum_{y' \in \mathcal{Y}}} \exp \bm{w} \cdot \phi(x, y')
@@ -138,7 +138,7 @@
     ??? 越小越好 (最小化熵)
     
 ## Lec7: Sequence Labeling
-    
+
 给每个词表上词性 (Part-of-Speech), 反映了词的语法属性
 
 **Problems**:
@@ -252,7 +252,7 @@
         Shift-Reduce, CKY 加速算法(基于 CNF 范式)
 
 #### 概率上下文无关
-    
+
 一般的文法生成式中加入了 $P(R)$ 为每条生成式赋予的概率
 
 - 如何计算整体的概率 $\prod p(\alpha \to \beta)$
@@ -280,7 +280,7 @@
     $$
         \max P(w_c | w_o, \theta)
     $$
-    
+
 1. 周围词取平均
     $$
         v_o = \frac{1}{2k} \sum_{j \in [i-k, i+k], j\neq i} w_j
@@ -325,7 +325,7 @@ $$
     forget, input, output gates
 
     $$
-        \begin{aligned}
+    \begin{aligned}
             f_t &= \sigma(W_f h_{t-1} + U_f x_t + b_f)\\
             i_t &= \sigma(W_i h_{t-1} + U_i x_t + b_i)\\
             o_t &= \sigma(W_o h_{t-1} + U_o x_t + b_o)\\
@@ -340,11 +340,11 @@ $$
     Update, reset gates
     
     $$
-        \begin{aligned}
+    \begin{aligned}
             z_t &= \sigma(W_u h_{t-1} + U_u x_t + b_u)\\
             r_t &= \sigma(W_r h_{t-1} + U_r x_t + b_r)\\
             \hat{h} &= tanh(W_h(r_t * h_{t-1}) + U_h x_t + b_h)\\
-            h_t &= (1 - u_t) * h_{t-1} + z_t * \hat{h}_t
+            h_t &= (1 - z_t) * h_{t-1} + z_t * \hat{h}_t
         \end{aligned}
     $$
 
@@ -353,8 +353,124 @@ $$
 - Gradient Vanishing: ReLU, residual connection
 - Gradient explosion: Gradient Clip
 
-## 预训练模型
+## 机器翻译 + 预训练模型
+
+Translate sentence from source language to target language. Often implemented with end-to-end framework(seq2seq)
+
+Encoder -> Decoder
+
+**Problem**
+
+- Valine RNN seq2seq model, the tail hidden state will become a bottleneck of the stream of massage.
+- Perform badly on model explaining while translating
+- Cannot handle the non-linear relation in sequence
+- $h_t$ depend on previous hidden states
+- difficulty in parallelism
+
+> Attention
+>> a. Bottleneck; b. long distance dependence; c. better interpretability
+>
+>> $e_i = s^T h_i$; $e_i = s^T W h_i$; $e_i = s^TW_1 + h_i^T W_2$
+
+In Translation: Q => decoder layer, K => all encoder layers, V => all encoder layers
+
+> How to use with $h_t$ ???
+
+#### Pre-trained Model
+
+- 词向量固定的情况下对于上下文的利用不足，同时也有一词多意的问题，也是需要解决的
+
+使用预训练模型更好的建模词向量 (pre-training + fine-tune)
+
+- ELMO
+- BERT: Masked Language Model; Next Sentence Prediction
+
+#### Rule-based
+
+通过某种深层次的表达在源语言和目标语言之间相互转换和生成
+
+1. 词汇转换： Easy
+2. 句法转换: Base on phrasing tree
+3. 语义转换: ???
+
+**Problem**
+
+1. 严重的人工依赖
+2. 大规模系统维护艰难
+3. 规则之间产生冲突
+
+#### Analogy-Based
+
+在语料库中匹配相似的句子，然后逐个逐个词语替换
+
+**Problem**
+1. 如何度量句子相似度: 某些距离(编辑距离)
+2. 对于为出现数据(实例相似度低)时翻译欠佳
+3. 搜索基于句子，不能做长文本的翻译
+
+#### Statistic MT
+
+$$\argmax_y P(y|x)$$
+
+**Noisy Channel**: 原始信号经过噪声扰动到了目标观测信号
+
+$$
+    \begin{aligned}
+        \argmax_y P(y|x) &= \argmax_y \frac{P(y)P(x|y)}{P(x)}\\
+            &= \argmax_y P(x|y)P(y)
+    \end{aligned}
+$$
+
+1. $P(y) = P(y_1)P(y_2|y_1)P(y_3|y_2, y_1)\dots$
+2. $P(x|y) = \sum_a P(x, a|y)$, 其中 $a = [a_1, \dots, a_n]$ 为一种对其方式
+
+    $$
+    	\begin{aligned}	
+		P(x, a|y) &= P(n|y)P(a|y, n)P(x|y, a, n)\\
+		&= P(n|y)\prod_{j=1}^{n}(P(a_j|a_1\dots, a_{j-1}, x_1, \dots, x_{j-1}, y, n)\times
+			P(x_j|a_1, \dots, a_{j-1}, x_1, \dots, x_{j-1}, y, n))
+	\end{aligned}
+    $$
+    
+    assumptions:
+
+    a. $P(n|y) = c$
+
+    b. $a_j \sim \text{uniform}(0, 1, \dots, m)$ => $P(a_j | a_1, \dots, a_{j-1}, x_1, \dots, x_{j-1}, y, n) = \frac{1}{m+1}$
+
+    c. $x_j \sim \text{Categorial}(\theta_{y_{a_j}})$ => $P(x_j|\dots, y,n) = P(x_j|y_{a_j})$
+
+TODO: Decode $y$ with viterbi
 
 
+#### Benchmark
 
-## 机器翻译
+- BLUE:
+
+    **Basic**
+
+    $$
+        p_n = \frac{\sum_{y^*}\sum_{ngram\in y^*} count_{match}(ngram)}{\sum_{y^*} \sum_{ngram\in y^*}count(ngram)} \quad \text{为翻译得到的句子$y^*$ 在 ngram 下的评分}
+    $$
+    
+    $$
+        \pord_{n=1}^4 p_n^{w_n} \quad w_n = \frac{1}{4}
+    $$
+    
+    **引入长度过短惩罚**
+    
+    c 为译文长度，r 为参照译文中最短或者最相近的长度
+
+    $$
+        BP = \left\{\begin{aligned}
+            &1, &c > r\\
+            &e^{1-\frac{r}{c}}, & c \leq r
+       \end{aligned}\right.
+    $$
+    
+    $$
+       BLUE = BP \times \prod_{n=1}^4 p_n^{w_n} = BP \times \exp(\sum_{n=1}^4 w_n \log p_n)
+    $$
+
+    > BLUE 虽然简单，但是在实践中证明同人类的感知即为相近在机器翻译任务的评价中 
+    
