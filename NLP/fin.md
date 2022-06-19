@@ -270,6 +270,18 @@
     $$
         P(x_{1:n}|s, \theta)
     $$
+    
+**Evaluation**
+
+对于一种可行的生成 $S => w$, 形式化表达其中的生成式为 `[S, start_id, end_id]` 表示为非终结符号在句子中覆盖的起始节点，通过和 tree bank 来匹配这样的三元组就可以作为 precision recall 的评价
+
+$$
+    Prc = C / M \quad \text{match / all num in prediction}
+$$
+
+$$
+    recall = C / N \quad \text{match / all num in sample}
+$$
 
 
 ## 词向量问题
