@@ -351,7 +351,6 @@ $$
     $$
     
 - GRU
-
     Update, reset gates
     
     $$

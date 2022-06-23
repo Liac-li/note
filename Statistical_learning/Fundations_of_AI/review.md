@@ -50,6 +50,48 @@ $$
     \frac{1}{n}\sum_{i=1}^n x_i \to ^{p} \frac{1}{n} \sum_{i=1}^n E[x_i]
 $$
 
+1. Markov: 有 $Var(\sum_{i=1}^n x_i) / n^2 \to 0$, 则满足大数定律
+
+2. Chebyshev: 有 $Var(X_i) < c$, 则满足大数定律
+
+3. Khintchine: 有 $E[x_i]$ 存在， 则满足大数定理
+
+3. Bernoulli: 有 $x_n \sim B(n, p)$, $X_n / n \to^p p$
+
+** 中心极限 **
+
+1. i.i.d $E[X_k] = \mu, Var[X_k] = \sigma^2$, $\sum_{k=1}^{n} X_k \to ^d N(n\mu, n\sigma^2)$
+
+2. $X_n \to B(n, p)$, $X_n \to ^d N(np, np(1 - p))$
+
+#### 集中不等式
+
+> 刻画随机变量远离期望的可能
+
+- Markov: $P(X \ge \epsilon) \leq \frac{E[x]}{\epsilon}$
+
+- Chebyshev: $P(|X - \mu| > \epsilon) \leq \frac{Var(X)}{\epsilon^2}$
+
+    $$
+        P(X - \mu \geq epsilon) \leq \frac{\sigma^2}{\sigma^2 + \epsilon^2}
+    $$
+
+
+**Chernoff** 方法
+
+$$
+    P[x \leq -\epsilon] = P[tX \geq -t\epsilon] \leq e^{t\epsilon}E[e^{tx}]
+$$
+
+$$
+    P[X\leq -\epsilon] \leq \min_t e^{t\epsilon}E[e^{tx}]
+$$
+
+Chernoff Bound: TODO
+
+#### 统计
+
+
 
 # 人工智能算法
 
@@ -75,4 +117,7 @@ $$
 
 - Ranking and searching
 
+#### Tips:
+
+- 前序和中序可以唯一的确定二叉树
 
